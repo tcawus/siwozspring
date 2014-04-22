@@ -1,0 +1,1 @@
+INSERT INTO User (name, surname, pesel) VALUES ('John', 'Doe', '1234567890');
