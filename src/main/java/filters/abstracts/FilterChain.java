@@ -1,8 +1,10 @@
-package filters;
+package filters.abstracts;
+
+import filters.ExceptionHandler;
 
 
 public abstract class FilterChain {
-	Filter firstFilter;
+	protected Filter firstFilter;
 	Object result;
 
 	public void validate(String input) {

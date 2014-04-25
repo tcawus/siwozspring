@@ -1,5 +1,9 @@
 package filters;
 
+import filters.abstracts.FilterChain;
+import filters.elements.IsIntegerFilter;
+import filters.elements.NotNullFilter;
+
 
 public class InsertFilterChain extends FilterChain {
 

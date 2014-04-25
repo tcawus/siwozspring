@@ -3,20 +3,13 @@ package org.siwoz.dao.repos;
 import java.util.Collection;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 
 public abstract class AbstractRepository<T> {
 
 	@Autowired
-	SessionFactory sessionFactory;
-	
-	protected Session session;
-
-	public AbstractRepository() {
-		session = sessionFactory.getCurrentSession();
-	}
+	protected HibernateTemplate hibernateTemplate;
 
 	/**
 	 * Gets all objects from DB.
@@ -40,7 +33,7 @@ public abstract class AbstractRepository<T> {
 	 * @param id
 	 * @return
 	 */
-	public abstract boolean add(T object);
+	public abstract long add(T object);
 
 	/**
 	 * Updates object with specified ID.
@@ -65,5 +58,5 @@ public abstract class AbstractRepository<T> {
 	 * @param id
 	 * @return
 	 */
-	public abstract boolean delete(long id);
+	public abstract void delete(long id);
 }

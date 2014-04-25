@@ -1,4 +1,7 @@
-package filters;
+package filters.elements;
+
+import filters.ExceptionHandler;
+import filters.abstracts.Filter;
 
 public class NotNullFilter extends Filter {
 	@Override

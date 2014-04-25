@@ -26,7 +26,7 @@ public class DataInitializer {
 	@Value("classpath:db/data/db-patient-data.sql")
 	private Resource patientDataScript;
 
-	@Value("classpath:db/data/db-user-data.sql")
+	@Value("classpath:db/data/db-person-data.sql")
 	private Resource userDataScript;
 
 	@Value("classpath:db/data/db-company-data.sql")

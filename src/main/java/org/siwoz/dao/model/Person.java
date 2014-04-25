@@ -1,5 +1,7 @@
 package org.siwoz.dao.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,12 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "User")
-public class User {
+@Table(name = "Person")
+public class Person implements Serializable {
+	private static final long serialVersionUID = 4424034325142121584L;
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private long id;
 
 	@Column
 	private String name;
@@ -21,12 +24,12 @@ public class User {
 	private String surname;
 
 	@Column
-	private String password;
+	private String pass;
 
 	@Column
 	private String pesel;
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
@@ -50,12 +53,12 @@ public class User {
 		this.surname = surname;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPass() {
+		return pass;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 	public String getPesel() {
@@ -64,6 +67,12 @@ public class User {
 
 	public void setPesel(String pesel) {
 		this.pesel = pesel;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", surname=" + surname
+				+ ", password=" + pass + ", pesel=" + pesel + "]";
 	}
 
 }
