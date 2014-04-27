@@ -1,24 +1,32 @@
 package org.siwoz.dao.repos;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.siwoz.dao.model.Person;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
-@Repository
-@Lazy
+@Repository("personRepository")
 public class PersonRepository extends AbstractRepository<Person> {
 
 	@Override
 	public Collection<Person> getAll() {
 		return null;
+		// return session.createCriteria(Person.class).list();
 	}
 
 	@Override
 	public Person getById(long id) {
-		return hibernateTemplate.load(Person.class, id);
+		// Session session = sessionFactory.openSession();
+		// Query query = session.createQuery("FROM Person WHERE id=" + id);
+		// Iterator<?> iterator = query.iterate();
+		// if (iterator.hasNext())
+		// return (Person) iterator.next();
+		// return hibernateTemplate.load(Person.class, id);
+		return null;
 	}
 
 	@Override
@@ -30,9 +38,8 @@ public class PersonRepository extends AbstractRepository<Person> {
 	}
 
 	@Override
-	public boolean update(long id, Person object) {
-		// TODO Auto-generated method stub
-		return false;
+	public void update(Person object) {
+		hibernateTemplate.update(object);
 	}
 
 	@Override
