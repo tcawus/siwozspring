@@ -1,10 +1,10 @@
 package org.siwoz.controller;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import javax.annotation.Resource;
 
+import org.siwoz.dao.model.Address;
 import org.siwoz.dao.model.Person;
 import org.siwoz.service.IService;
 import org.springframework.stereotype.Controller;
@@ -18,14 +18,13 @@ public class IndexController {
 	@Resource(name = "personService")
 	IService<Person> personService;
 
+	@Resource(name = "addressService")
+	IService<Address> addressService;
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) throws IOException {
-		Person person = new Person();
-		person.setName("Jan");
-		person.setSurname("Nowak");
-		person.setPass("haslo");
-		person.setPesel("234566543");
-		model.addAttribute("persons", Arrays.asList(person));
+		model.addAttribute("persons", personService.getAll());
 		return "index";
+
 	}
 }

@@ -3,20 +3,26 @@ package dao;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.siwoz.config.MvcConfiguration;
 import org.siwoz.dao.configuration.DataInitializer;
 import org.siwoz.dao.configuration.PersistenceConfig;
+import org.siwoz.dao.model.Person;
+import org.siwoz.dao.repos.PersonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
 @ContextConfiguration(classes = { PersistenceConfig.class,
-		DataInitializer.class })
+		DataInitializer.class, MvcConfiguration.class })
 public class RepositoryTest {
 
-	// @Autowired
-	// PersonRepository userRepository;
-	// long userId;
-	// final String EXAMPLE_NAME = "qwertyuiop";
+	 @Autowired
+	 PersonRepository personRepository;
+	 long userId;
+	 final String EXAMPLE_NAME = "qwertyuiop";
 
 	// @Before
 	// public void insertBeforeTest() {
@@ -27,8 +33,8 @@ public class RepositoryTest {
 
 	@Test
 	public void updateTest() {
-		// System.out.println(userRepository.getAll().size());
-		// Person person = userRepository.getById(userId);
+		// System.out.println(personRepository.getAll().size());
+		 Person person = personRepository.getById(userId);
 		// person.setPass("123242543");
 		// userRepository.update(person);
 	}

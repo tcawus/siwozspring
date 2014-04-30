@@ -13,13 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class PersonService implements IService<Person> {
 
-	@Resource(name="personRepository")
+	@Resource(name = "personRepository")
 	PersonRepository personRepository;
-	
+
 	@Override
 	public Collection<Person> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return personRepository.getAll();
 	}
 
 	@Override
@@ -28,21 +27,17 @@ public class PersonService implements IService<Person> {
 	}
 
 	@Override
-	public int add(Person object) {
-		// TODO Auto-generated method stub
-		return 0;
+	public Person add(Person object) {
+		return personRepository.add(object);
 	}
 
 	@Override
 	public void update(Person object) {
-		// TODO Auto-generated method stub
-
+		personRepository.update(object);
 	}
 
 	@Override
-	public void delete(long id) {
-		// TODO Auto-generated method stub
-
+	public void delete(Person object) {
+		personRepository.delete(object);
 	}
-
 }

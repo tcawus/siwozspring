@@ -1,23 +1,25 @@
 package org.siwoz.dao.repos;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.HibernateTemplate;
 
 public abstract class AbstractRepository<T> {
 
 	@Autowired
-	protected HibernateTemplate hibernateTemplate;
-	
-	@Autowired
 	public SessionFactory sessionFactory;
 
-	protected Session session;
-	
+	private Session session;
+
+	protected Session getSession() {
+		if (session == null) {
+			session = sessionFactory.getCurrentSession();
+		}
+		return session;
+	}
+
 	/**
 	 * Gets all objects from DB.
 	 * 
@@ -34,36 +36,18 @@ public abstract class AbstractRepository<T> {
 	 */
 	public abstract T getById(long id);
 
-	/**
-	 * Add specified object.
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public abstract long add(T object);
+	public T add(T object) {
+		getSession().persist(object);
+		getSession().flush();
+		return object;
+	}
 
-	/**
-	 * Updates object with specified ID.
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public abstract void update(T object);
+	public void update(T object) {
+		getSession().update(object);
+		getSession().flush();
+	}
 
-	/**
-	 * Updates specified ID with specified properties with given values.
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public abstract boolean update(long id, List<String> properties,
-			List<Object> values);
-
-	/**
-	 * Deletes object with selected ID.
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public abstract void delete(long id);
+	public void delete(T object) {
+		getSession().delete(object);
+	}
 }

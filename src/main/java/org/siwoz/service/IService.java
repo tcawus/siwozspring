@@ -2,15 +2,12 @@ package org.siwoz.service;
 
 import java.util.Collection;
 
-import org.springframework.transaction.annotation.Transactional;
-
 /**
  * 
  * @author Tomek Wagner
  *
  * @param <T>
  */
-@Transactional
 public interface IService<T> {
 
     /**
@@ -32,7 +29,7 @@ public interface IService<T> {
      * @param id
      * @return
      */
-    public int add(T object);
+    public T add(T object);
     
     /**
      * Updates object with specified ID.
@@ -46,6 +43,6 @@ public interface IService<T> {
      * @param id
      * @return
      */
-    public void delete(long id);
+    public void delete(T object);
 
 }
