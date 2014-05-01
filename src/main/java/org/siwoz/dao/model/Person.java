@@ -1,7 +1,7 @@
 package org.siwoz.dao.model;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,8 +37,8 @@ public class Person implements Serializable {
 		return registerDate;
 	}
 
-	public void setRegisterDate(Date registerDate) {
-		this.registerDate = registerDate;
+	public void setRegisterDate(Date date) {
+		this.registerDate = date;
 	}
 
 	public long getId() {

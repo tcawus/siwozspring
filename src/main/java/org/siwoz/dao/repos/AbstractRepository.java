@@ -17,6 +17,9 @@ public abstract class AbstractRepository<T> {
 		if (session == null) {
 			session = sessionFactory.getCurrentSession();
 		}
+		if (!session.isOpen()) {
+			session = sessionFactory.openSession();
+		}
 		return session;
 	}
 
