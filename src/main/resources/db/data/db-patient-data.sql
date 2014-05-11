@@ -1,1 +1,0 @@
-INSERT INTO patient (idPerson) VALUES (0) 

@@ -27,11 +27,14 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/src/main/resources/**")
 				.addResourceLocations("/src/main/resources/");
+		registry.addResourceHandler("/resources/**").addResourceLocations(
+				"/resources/");
 	}
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 		super.addInterceptors(registry);
-//		registry.addWebRequestInterceptor(new OpenSessionInViewInterceptor());
+		// registry.addWebRequestInterceptor(new
+		// OpenSessionInViewInterceptor());
 	}
 }

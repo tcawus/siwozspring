@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.annotation.Resource;
 
-import org.siwoz.dao.model.Address;
 import org.siwoz.dao.model.Person;
 import org.siwoz.service.IService;
 import org.springframework.stereotype.Controller;
@@ -18,13 +17,9 @@ public class IndexController {
 	@Resource(name = "personService")
 	IService<Person> personService;
 
-	@Resource(name = "addressService")
-	IService<Address> addressService;
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) throws IOException {
 		model.addAttribute("persons", personService.getAll());
 		return "index";
-
 	}
 }

@@ -17,32 +17,32 @@ public class DataInitializer {
 	@Value("classpath:db/data/db-schema.sql")
 	private Resource schemaScript;
 
-//	@Value("classpath:db/data/db-employeestatus-data.sql")
-//	private Resource employeeStatusDataScript;
-//
-//	@Value("classpath:db/data/db-employee-data.sql")
-//	private Resource employeeDataScript;
-//
-//	@Value("classpath:db/data/db-patient-data.sql")
-//	private Resource patientDataScript;
-//
+	@Value("classpath:db/data/db-employeestatus-data.sql")
+	private Resource employeeStatusDataScript;
+
+	@Value("classpath:db/data/db-employee-data.sql")
+	private Resource employeeDataScript;
+
+	@Value("classpath:db/data/db-patient-data.sql")
+	private Resource patientDataScript;
+
 	@Value("classpath:db/data/db-person-data.sql")
 	private Resource personDataScript;
-//
-//	@Value("classpath:db/data/db-company-data.sql")
-//	private Resource companyDataScript;
-//
+
+	@Value("classpath:db/data/db-company-data.sql")
+	private Resource companyDataScript;
+
 	@Value("classpath:db/data/db-address-data.sql")
 	private Resource addressDataScript;
-//
-//	@Value("classpath:db/data/db-visit-data.sql")
-//	private Resource visitDataScript;
-//
-//	@Value("classpath:db/data/db-historicalvisit-data.sql")
-//	private Resource historicalVisitDataScript;
-//
-//	@Value("classpath:db/data/db-patient2company-data.sql")
-//	private Resource patient2CompanyDataScript;
+
+	@Value("classpath:db/data/db-visit-data.sql")
+	private Resource visitDataScript;
+
+	@Value("classpath:db/data/db-historicalvisit-data.sql")
+	private Resource historicalVisitDataScript;
+
+	@Value("classpath:db/data/db-patient2company-data.sql")
+	private Resource patient2CompanyDataScript;
 
 	@Autowired
 	DataSource restDataSource;
@@ -59,15 +59,15 @@ public class DataInitializer {
 	private DatabasePopulator databasePopulator() {
 		final ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
 		populator.addScript(schemaScript);
-//		populator.addScript(employeeStatusDataScript);
-//		populator.addScript(employeeDataScript);
+		populator.addScript(employeeStatusDataScript);
+		populator.addScript(employeeDataScript);
 		populator.addScript(personDataScript);
-//		populator.addScript(patientDataScript);
-//		populator.addScript(companyDataScript);
+		populator.addScript(patientDataScript);
+		populator.addScript(companyDataScript);
 		populator.addScript(addressDataScript);
-//		populator.addScript(patient2CompanyDataScript);
-//		populator.addScript(visitDataScript);
-//		populator.addScript(historicalVisitDataScript);
+		populator.addScript(patient2CompanyDataScript);
+		populator.addScript(visitDataScript);
+		populator.addScript(historicalVisitDataScript);
 		return populator;
 	}
 }
