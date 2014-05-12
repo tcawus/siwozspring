@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.siwoz.config.MvcConfiguration;
 import org.siwoz.dao.configuration.DataInitializer;
 import org.siwoz.dao.configuration.PersistenceConfig;
-import org.siwoz.service.IService;
+import org.siwoz.service.general.IService;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;

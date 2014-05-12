@@ -1,6 +1,7 @@
 package org.siwoz.dao.repos;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.siwoz.dao.model.Person;
@@ -21,5 +22,15 @@ public class PersonRepository extends AbstractRepository<Person> {
 	@Override
 	public Person getById(long id) {
 		return (Person) getSession().get(Person.class, id);
+	}
+
+	public Person getByEmail(String email) {
+		Query query = getSession().createQuery(
+				"from Person where email='" + email + "'");
+		List<?> queryResult = query.list();
+		if (queryResult.size() == 0)
+			return null;
+		return Lists.newArrayList(Iterables.filter(queryResult, Person.class))
+				.get(0);
 	}
 }

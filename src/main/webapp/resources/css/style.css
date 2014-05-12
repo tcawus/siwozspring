@@ -1,0 +1,18 @@
+body {
+	margin-left: 1%;
+	margin-top: 10%;
+}
+
+.inputLabel {
+	font-weight: bold;
+}
+
+.errors {
+	font-weight: bold;
+	color: red;
+}
+
+.success {
+	font-weight: bold;
+	color: green;
+}

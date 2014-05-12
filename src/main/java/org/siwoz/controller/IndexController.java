@@ -3,23 +3,64 @@ package org.siwoz.controller;
 import java.io.IOException;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
-import org.siwoz.dao.model.Person;
-import org.siwoz.service.IService;
+import org.siwoz.model.MyUserType;
+import org.siwoz.model.forms.auth.UserParameters;
+import org.siwoz.model.forms.register.RegisterBean;
+import org.siwoz.service.index.RegistrationService;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class IndexController {
 
-	@Resource(name = "personService")
-	IService<Person> personService;
+	@Resource(name = "registrationService")
+	RegistrationService registrationService;
+
+	@Resource(name = "messageSource")
+	MessageSource messageSource;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) throws IOException {
-		model.addAttribute("persons", personService.getAll());
+		model.addAttribute("userParameters", new UserParameters());
 		return "index";
+	}
+
+	@RequestMapping(value = "/", method = RequestMethod.POST)
+	public String loginFormSubmitted(@Valid UserParameters userParameters,
+			BindingResult bindingResult) throws IOException {
+		// tu jest potrzebna walidacja?
+		return "index";
+	}
+
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String registerIndex(Model model) throws IOException {
+		model.addAttribute("userType", MyUserType.toMap());
+		model.addAttribute("registerBean", new RegisterBean());
+		return "register";
+	}
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public ModelAndView registerFormSubmitted(@Valid RegisterBean registerBean,
+			BindingResult bindingResult) throws IOException {
+		if (bindingResult.hasErrors()) {
+			ModelAndView mav = new ModelAndView();
+			registerBean.clearPasswords();
+			mav.addObject("userType", MyUserType.toMap());
+			mav.addObject("registerBean", registerBean);
+			mav.addObject("registrationResult",
+					messageSource.getMessage("passesNotEqual", null, null));
+			return mav;
+		}
+		registrationService.checkIfUserExists(registerBean.getEmail());
+		registrationService.register(registerBean);
+		return new ModelAndView("register", "registrationResult",
+				registrationService.getRegistrationResult());
 	}
 }

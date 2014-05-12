@@ -1,4 +1,4 @@
-package org.siwoz.service;
+package org.siwoz.service.general;
 
 import java.util.Collection;
 

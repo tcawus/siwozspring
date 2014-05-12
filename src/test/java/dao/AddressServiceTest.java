@@ -3,7 +3,7 @@ package dao;
 import javax.annotation.Resource;
 
 import org.siwoz.dao.model.Address;
-import org.siwoz.service.IService;
+import org.siwoz.service.general.IService;
 
 public class AddressServiceTest extends DaoTestScheme<Address> {
 
