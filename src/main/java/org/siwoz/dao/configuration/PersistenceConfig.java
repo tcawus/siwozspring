@@ -1,6 +1,5 @@
 package org.siwoz.dao.configuration;
 
-import java.beans.PropertyVetoException;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -11,12 +10,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate3.HibernateExceptionTranslator;
 import org.springframework.orm.hibernate3.HibernateTransactionManager;
 import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
 @EnableTransactionManagement
@@ -39,13 +37,15 @@ public class PersistenceConfig {
 
 	@Bean
 	public DataSource restDataSource() {
-		ComboPooledDataSource dataSource = new ComboPooledDataSource();
+		DriverManagerDataSource dataSource = null;
 		try {
-			dataSource.setDriverClass(env.getProperty("jdbc.driverClassName"));
-			dataSource.setJdbcUrl(env.getProperty("jdbc.url"));
-			dataSource.setUser(env.getProperty("jdbc.user"));
-		} catch (PropertyVetoException e) {
-			// TODO Auto-generated catch block
+			dataSource = new DriverManagerDataSource();
+			dataSource.setDriverClassName(env
+					.getProperty("jdbc.driverClassName"));
+			dataSource.setUrl(env.getProperty("jdbc.url"));
+			dataSource.setUsername(env.getProperty("jdbc.user"));
+			// dataSource.setPassword(env.getProperty("jdbc.password"));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return dataSource;
