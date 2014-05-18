@@ -27,9 +27,9 @@ public class Company {
 	@JoinColumn(name = "idAddress", updatable = true, insertable = true)
 	private Address idAddress;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Person.class)
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Users.class)
 	@JoinColumn(name = "founder", updatable = true, insertable = true)
-	private Person founder;
+	private Users founder;
 
 	public Integer getId() {
 		return id;
@@ -63,11 +63,11 @@ public class Company {
 		this.idAddress = idAddress;
 	}
 
-	public Person getFounder() {
+	public Users getFounder() {
 		return founder;
 	}
 
-	public void setFounder(Person founder) {
+	public void setFounder(Users founder) {
 		this.founder = founder;
 	}
 

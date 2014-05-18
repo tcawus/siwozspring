@@ -26,8 +26,8 @@ public class DataInitializer {
 	@Value("classpath:db/data/db-patient-data.sql")
 	private Resource patientDataScript;
 
-	@Value("classpath:db/data/db-person-data.sql")
-	private Resource personDataScript;
+	@Value("classpath:db/data/db-users-data.sql")
+	private Resource usersDataScript;
 
 	@Value("classpath:db/data/db-company-data.sql")
 	private Resource companyDataScript;
@@ -61,7 +61,7 @@ public class DataInitializer {
 		populator.addScript(schemaScript);
 		populator.addScript(employeeStatusDataScript);
 		populator.addScript(employeeDataScript);
-		populator.addScript(personDataScript);
+		populator.addScript(usersDataScript);
 		populator.addScript(patientDataScript);
 		populator.addScript(companyDataScript);
 		populator.addScript(addressDataScript);

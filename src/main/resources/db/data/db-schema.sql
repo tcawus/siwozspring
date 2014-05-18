@@ -4,11 +4,11 @@ DROP TABLE IF EXISTS `Employee`;
 DROP TABLE IF EXISTS `Patient2Company`;
 DROP TABLE IF EXISTS `Company`;
 DROP TABLE IF EXISTS `Patient`;
-DROP TABLE IF EXISTS `Person`;
+DROP TABLE IF EXISTS `Users`;
 DROP TABLE IF EXISTS `EmployeeStatus`;
 DROP TABLE IF EXISTS `Address`;
 
-CREATE TABLE Person (
+CREATE TABLE Users (
 	id INT AUTO_INCREMENT,
 	name VARCHAR(64),
 	surname VARCHAR(128),
@@ -29,8 +29,8 @@ CREATE TABLE Address (
 
 CREATE TABLE Patient (
 	id INT AUTO_INCREMENT,
-	idPerson INT,
-	FOREIGN KEY(idPerson) REFERENCES Person(id),
+	idUser INT,
+	FOREIGN KEY(idUser) REFERENCES Users(id),
 	PRIMARY KEY(id)
 )  DEFAULT CHARSET=utf8;
 
@@ -49,18 +49,18 @@ CREATE TABLE Company (
 	idAddress INT,
 	founder INT,
 	FOREIGN KEY(idAddress) REFERENCES Address(id),
-	FOREIGN KEY(founder) REFERENCES Person(id),
+	FOREIGN KEY(founder) REFERENCES Users(id),
 	PRIMARY KEY(id)
 )  DEFAULT CHARSET=utf8;
 
 CREATE TABLE Employee (
 	id INT AUTO_INCREMENT,
 	idEmployeeStatus INT,
-	idPerson INT,
+	idUser INT,
 	idCompany INT,
 	FOREIGN KEY(idEmployeeStatus) REFERENCES EmployeeStatus(id),
-	FOREIGN KEY(idPerson) REFERENCES Person(id),
-	FOREIGN KEY(idPerson) REFERENCES Company(id),
+	FOREIGN KEY(idUser) REFERENCES Users(id),
+	FOREIGN KEY(idCompany) REFERENCES Company(id),
 	PRIMARY KEY(id)
 )  DEFAULT CHARSET=utf8;
 

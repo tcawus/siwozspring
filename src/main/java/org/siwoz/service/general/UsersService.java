@@ -4,40 +4,40 @@ import java.util.Collection;
 
 import javax.annotation.Resource;
 
-import org.siwoz.dao.model.Person;
-import org.siwoz.dao.repos.PersonRepository;
+import org.siwoz.dao.model.Users;
+import org.siwoz.dao.repos.UsersRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service("personService")
+@Service("usersService")
 @Transactional
-public class PersonService implements IService<Person> {
+public class UsersService implements IService<Users> {
 
-	@Resource(name = "personRepository")
-	PersonRepository personRepository;
+	@Resource(name = "usersRepository")
+	UsersRepository usersRepository;
 
 	@Override
-	public Collection<Person> getAll() {
-		return personRepository.getAll();
+	public Collection<Users> getAll() {
+		return usersRepository.getAll();
 	}
 
 	@Override
-	public Person getById(long id) {
-		return personRepository.getById(id);
+	public Users getById(long id) {
+		return usersRepository.getById(id);
 	}
 
 	@Override
-	public Person add(Person object) {
-		return personRepository.add(object);
+	public Users add(Users object) {
+		return usersRepository.add(object);
 	}
 
 	@Override
-	public void update(Person object) {
-		personRepository.update(object);
+	public void update(Users object) {
+		usersRepository.update(object);
 	}
 
 	@Override
-	public void delete(Person object) {
-		personRepository.delete(object);
+	public void delete(Users object) {
+		usersRepository.delete(object);
 	}
 }

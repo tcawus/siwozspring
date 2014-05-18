@@ -20,13 +20,13 @@ public class Employee {
 	@JoinColumn(name = "idEmployeeStatus", updatable = true, insertable = true)
 	private Address idEmployeeStatus;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Person.class)
-	@JoinColumn(name = "idPerson", updatable = true, insertable = true)
-	private Person idPerson;
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Users.class)
+	@JoinColumn(name = "idUser", updatable = true, insertable = true)
+	private Users idUser;
 
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Company.class)
 	@JoinColumn(name = "idCompany", updatable = true, insertable = true)
-	private Person idCompany;
+	private Users idCompany;
 
 	public Integer getId() {
 		return id;
@@ -40,23 +40,24 @@ public class Employee {
 		return idEmployeeStatus;
 	}
 
+	public Users getIdUser() {
+		return idUser;
+	}
+
+	public void setIdUser(Users idUser) {
+		this.idUser = idUser;
+	}
+
 	public void setIdEmployeeStatus(Address idEmployeeStatus) {
 		this.idEmployeeStatus = idEmployeeStatus;
 	}
 
-	public Person getIdPerson() {
-		return idPerson;
-	}
 
-	public void setIdPerson(Person idPerson) {
-		this.idPerson = idPerson;
-	}
-
-	public Person getIdCompany() {
+	public Users getIdCompany() {
 		return idCompany;
 	}
 
-	public void setIdCompany(Person idCompany) {
+	public void setIdCompany(Users idCompany) {
 		this.idCompany = idCompany;
 	}
 

@@ -16,9 +16,9 @@ public class Patient {
 	@GeneratedValue
 	private long id;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Person.class)
-	@JoinColumn(name = "idPerson", updatable = true, insertable = true)
-	private Person idPerson;
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Users.class)
+	@JoinColumn(name = "idUser", updatable = true, insertable = true)
+	private Users idUser;
 
 	public long getId() {
 		return id;
@@ -28,12 +28,11 @@ public class Patient {
 		this.id = id;
 	}
 
-	public Person getIdPerson() {
-		return idPerson;
+	public Users getIdUser() {
+		return idUser;
 	}
 
-	public void setIdPerson(Person idPerson) {
-		this.idPerson = idPerson;
+	public void setIdUser(Users idUser) {
+		this.idUser = idUser;
 	}
-
 }

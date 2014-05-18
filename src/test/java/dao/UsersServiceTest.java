@@ -5,30 +5,30 @@ import java.util.Date;
 import javax.annotation.Resource;
 
 import org.junit.Before;
-import org.siwoz.dao.model.Person;
+import org.siwoz.dao.model.Users;
 import org.siwoz.service.general.IService;
 
-public class PersonServiceTest extends DaoTestScheme<Person> {
+public class UsersServiceTest extends DaoTestScheme<Users> {
 
-	@Resource(name = "personService")
-	IService<Person> personService;
+	@Resource(name = "usersService")
+	IService<Users> usersService;
 
 	@Before
 	public void insertObjectBeforeTest() {
-		Person person = new Person();
-		person.setName("MyNameIs");
-		person.setPass("45678976543ergmjy65yd");
-		person.setPesel("1234567890");
-		person.setRegisterDate(new Date());
-		personService.add(person);
+		Users user = new Users();
+		user.setName("MyNameIs");
+		user.setPass("45678976543ergmjy65yd");
+		user.setPesel("1234567890");
+		user.setRegisterDate(new Date());
+		usersService.add(user);
 		setService();
-		setObjectToUpdate(person);
-		setInsertedId(person.getId());
+		setObjectToUpdate(user);
+		setInsertedId(user.getId());
 	}
 
 	@Override
 	protected void setService() {
-		service = personService;
+		service = usersService;
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class PersonServiceTest extends DaoTestScheme<Person> {
 
 	@Override
 	protected void setObjectToUpdate(Object object) {
-		((Person) object).setName("MyNameIs2");
+		((Users) object).setName("MyNameIs2");
 		objectToUpdate = object;
 	}
 }

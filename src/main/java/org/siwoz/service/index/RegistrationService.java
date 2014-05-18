@@ -5,8 +5,8 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.annotation.Resource;
 
-import org.siwoz.dao.model.Person;
-import org.siwoz.dao.repos.PersonRepository;
+import org.siwoz.dao.model.Users;
+import org.siwoz.dao.repos.UsersRepository;
 import org.siwoz.model.forms.register.RegisterBean;
 import org.siwoz.util.Converter;
 import org.springframework.context.MessageSource;
@@ -17,8 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class RegistrationService {
 
-	@Resource(name = "personRepository")
-	PersonRepository personRepository;
+	@Resource(name = "usersRepository")
+	UsersRepository usersRepository;
 
 	@Resource(name = "messageSource")
 	MessageSource messageSource;
@@ -27,7 +27,7 @@ public class RegistrationService {
 	boolean problemsWithRegister;
 
 	public void checkIfUserExists(String email) {
-		if (personRepository.getByEmail(email) != null)
+		if (usersRepository.getByEmail(email) != null)
 			userAlreadyExists = true;
 	}
 
@@ -37,12 +37,12 @@ public class RegistrationService {
 			messageDigest = MessageDigest.getInstance("SHA-256");
 			messageDigest.update(registerBean.getPass().getBytes());
 
-			Person person = new Person();
-			person.setName(registerBean.getName());
-			person.setSurname(registerBean.getSurname());
-			person.setEmail(registerBean.getEmail());
-			person.setPass(Converter.hashToString(messageDigest.digest()));
-			personRepository.add(person);
+			Users user = new Users();
+			user.setName(registerBean.getName());
+			user.setSurname(registerBean.getSurname());
+			user.setEmail(registerBean.getEmail());
+			user.setPass(Converter.hashToString(messageDigest.digest()));
+			usersRepository.add(user);
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
