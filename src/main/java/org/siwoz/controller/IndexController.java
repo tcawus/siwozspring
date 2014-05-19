@@ -8,7 +8,7 @@ import javax.validation.Valid;
 import org.siwoz.model.MyUserType;
 import org.siwoz.model.forms.auth.UserParameters;
 import org.siwoz.model.forms.register.RegisterBean;
-import org.siwoz.service.index.RegistrationService;
+import org.siwoz.service.index.AccountManagerService;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class IndexController {
 
-	@Resource(name = "registrationService")
-	RegistrationService registrationService;
+	@Resource(name = "accountManagerService")
+	AccountManagerService accountManagerService;
 
 	@Resource(name = "messageSource")
 	MessageSource messageSource;
@@ -59,10 +59,10 @@ public class IndexController {
 					messageSource.getMessage("passesNotEqual", null, null));
 			return mav;
 		}
-		registrationService.checkIfUserExists(registerBean.getEmail());
-		registrationService.register(registerBean);
+		accountManagerService.checkIfUserExists(registerBean.getEmail());
+		accountManagerService.register(registerBean);
 		return new ModelAndView("register", "registrationResult",
-				registrationService.getRegistrationResult());
+				accountManagerService.getRegistrationResult());
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)

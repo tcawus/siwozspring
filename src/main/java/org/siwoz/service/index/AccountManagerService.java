@@ -13,9 +13,9 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service("registrationService")
+@Service("accountManagerService")
 @Transactional
-public class RegistrationService {
+public class AccountManagerService {
 
 	@Resource(name = "usersRepository")
 	UsersRepository usersRepository;
