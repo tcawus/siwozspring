@@ -32,10 +32,11 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 				"/resources/");
 	}
 
-	@Bean(name="messageSource")
+	@Bean(name = "messageSource")
 	public MessageSource messageSource() {
 		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
 		messageSource.setBasename("messages");
 		return messageSource;
-	}	
+	}
+
 }

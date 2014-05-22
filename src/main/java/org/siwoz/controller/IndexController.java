@@ -66,21 +66,25 @@ public class IndexController {
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView login(
-			@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout) {
-
+	public ModelAndView welcomePage() {
+ 
 		ModelAndView model = new ModelAndView();
-		if (error != null) {
-			model.addObject("error", "Invalid username and password!");
-		}
-
-		if (logout != null) {
-			model.addObject("msg", "You've been logged out successfully.");
-		}
+		model.addObject("title", "Spring Security Hello World");
+		model.addObject("message", "This is welcome page!");
 		model.setViewName("login");
-
 		return model;
-
+ 
+	}
+ 
+	@RequestMapping(value = "/admin**", method = RequestMethod.GET)
+	public ModelAndView adminPage() {
+ 
+		ModelAndView model = new ModelAndView();
+		model.addObject("title", "Spring Security Hello World");
+		model.addObject("message", "This is protected page!");
+		model.setViewName("admin");
+ 
+		return model;
+ 
 	}
 }
