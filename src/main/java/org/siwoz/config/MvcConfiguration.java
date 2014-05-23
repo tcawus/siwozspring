@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @ComponentScan(basePackages = "org.siwoz")
 @EnableWebMvc
-@ImportResource("classpath:spring-security.xml")
+@ImportResource("classpath:/spring_security.xml")
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
@@ -40,7 +40,4 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		messageSource.setBasename("messages");
 		return messageSource;
 	}
-	
-	
-
 }
