@@ -22,12 +22,44 @@ public class Visit {
 	@Column
 	Date visitDate;
 	
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Patient2Company.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Patient2Company.class)
 	@JoinColumn(name = "idPatient2Company", updatable = true, insertable = true)
 	private Patient2Company idPatient2Company;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Employee.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Employee.class)
 	@JoinColumn(name = "idEmployee", updatable = true, insertable = true)
 	private Employee idEmployee;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Date getVisitDate() {
+		return visitDate;
+	}
+
+	public void setVisitDate(Date visitDate) {
+		this.visitDate = visitDate;
+	}
+
+	public Patient2Company getIdPatient2Company() {
+		return idPatient2Company;
+	}
+
+	public void setIdPatient2Company(Patient2Company idPatient2Company) {
+		this.idPatient2Company = idPatient2Company;
+	}
+
+	public Employee getIdEmployee() {
+		return idEmployee;
+	}
+
+	public void setIdEmployee(Employee idEmployee) {
+		this.idEmployee = idEmployee;
+	}
 	
 }

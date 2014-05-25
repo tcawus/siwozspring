@@ -59,12 +59,12 @@ public class DataInitializer {
 	private DatabasePopulator databasePopulator() {
 		final ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
 		populator.addScript(schemaScript);
-		populator.addScript(employeeStatusDataScript);
-		populator.addScript(employeeDataScript);
 		populator.addScript(usersDataScript);
-		populator.addScript(patientDataScript);
-		populator.addScript(companyDataScript);
 		populator.addScript(addressDataScript);
+		populator.addScript(patientDataScript);
+		populator.addScript(employeeStatusDataScript);
+		populator.addScript(companyDataScript);
+		populator.addScript(employeeDataScript);	
 		populator.addScript(patient2CompanyDataScript);
 		populator.addScript(visitDataScript);
 		populator.addScript(historicalVisitDataScript);

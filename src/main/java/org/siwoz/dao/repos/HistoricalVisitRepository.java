@@ -1,6 +1,7 @@
 package org.siwoz.dao.repos;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.siwoz.dao.model.HistoricalVisit;
@@ -25,4 +26,17 @@ public class HistoricalVisitRepository extends
 		return (HistoricalVisit) getSession().get(HistoricalVisit.class, id);
 	}
 
+	public List<HistoricalVisit> getAllPatientsForCompanyAndEmployee(
+			int companyId, int employeeId) {
+		Query query = getSession().createQuery("from HistoricalVisit");
+		return Lists.newArrayList(Iterables.filter(query.list(),
+				HistoricalVisit.class));
+	}
+
+	public List<HistoricalVisit> getPatientsVisitDataForCompanyAndEmployee(
+			int companyId, int employeeId) {
+		Query query = getSession().createQuery("from HistoricalVisit");
+		return Lists.newArrayList(Iterables.filter(query.list(),
+				HistoricalVisit.class));
+	}
 }

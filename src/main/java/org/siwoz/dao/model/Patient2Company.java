@@ -16,11 +16,11 @@ public class Patient2Company {
 	@GeneratedValue
 	private Integer id;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Patient.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Patient.class)
 	@JoinColumn(name = "idPatient", updatable = true, insertable = true)
 	private Patient idPatient;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Company.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Company.class)
 	@JoinColumn(name = "idCompany", updatable = true, insertable = true)
 	private Company idCompany;
 

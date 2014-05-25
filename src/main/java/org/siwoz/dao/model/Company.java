@@ -23,11 +23,11 @@ public class Company {
 	@Column
 	private String description;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Address.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Address.class)
 	@JoinColumn(name = "idAddress", updatable = true, insertable = true)
 	private Address idAddress;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Users.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Users.class)
 	@JoinColumn(name = "founder", updatable = true, insertable = true)
 	private Users founder;
 

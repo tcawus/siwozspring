@@ -2,7 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<jsp:include page="fragments/headTag.jsp" />
+<head><jsp:include page="fragments/headTag.jsp" /></head>
 <body>
 	<div id="form">
 		<form:form method="post" modelAttribute="registerBean">

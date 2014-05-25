@@ -16,7 +16,7 @@ public class Patient {
 	@GeneratedValue
 	private long id;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Users.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Users.class)
 	@JoinColumn(name = "idUser", updatable = true, insertable = true)
 	private Users idUser;
 

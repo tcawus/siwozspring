@@ -16,17 +16,17 @@ public class Employee {
 	@GeneratedValue
 	private Integer id;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = EmployeeStatus.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = EmployeeStatus.class)
 	@JoinColumn(name = "idEmployeeStatus", updatable = true, insertable = true)
-	private Address idEmployeeStatus;
+	private EmployeeStatus idEmployeeStatus;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Users.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Users.class)
 	@JoinColumn(name = "idUser", updatable = true, insertable = true)
 	private Users idUser;
 
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Company.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Company.class)
 	@JoinColumn(name = "idCompany", updatable = true, insertable = true)
-	private Users idCompany;
+	private Company idCompany;
 
 	public Integer getId() {
 		return id;
@@ -36,7 +36,7 @@ public class Employee {
 		this.id = id;
 	}
 
-	public Address getIdEmployeeStatus() {
+	public EmployeeStatus getIdEmployeeStatus() {
 		return idEmployeeStatus;
 	}
 
@@ -48,16 +48,16 @@ public class Employee {
 		this.idUser = idUser;
 	}
 
-	public void setIdEmployeeStatus(Address idEmployeeStatus) {
+	public void setIdEmployeeStatus(EmployeeStatus idEmployeeStatus) {
 		this.idEmployeeStatus = idEmployeeStatus;
 	}
 
 
-	public Users getIdCompany() {
+	public Company getIdCompany() {
 		return idCompany;
 	}
 
-	public void setIdCompany(Users idCompany) {
+	public void setIdCompany(Company idCompany) {
 		this.idCompany = idCompany;
 	}
 

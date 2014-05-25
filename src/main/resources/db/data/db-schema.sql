@@ -40,8 +40,6 @@ CREATE TABLE EmployeeStatus (
 	PRIMARY KEY(id)
 )  DEFAULT CHARSET=utf8;
 
-
-
 CREATE TABLE Company (
 	id INT AUTO_INCREMENT,
 	name varchar(128),

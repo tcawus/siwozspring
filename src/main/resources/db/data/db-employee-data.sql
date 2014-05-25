@@ -1,0 +1,1 @@
+INSERT INTO Employee (idEmployeeStatus, idUser, idCompany) VALUES (1, 1, 1);
