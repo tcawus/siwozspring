@@ -35,7 +35,7 @@ public class IndexController {
 	public String index(Model model) throws IOException {
 		model.addAttribute("userParameters", new UserParameters());
 		model.addAttribute("title", "Spring Security Hello World");
-		model.addAttribute("message", "This is protected page!");
+		model.addAttribute("message", "This is user page!");
 		return "index";
 	}
 

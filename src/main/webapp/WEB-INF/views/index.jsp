@@ -26,7 +26,7 @@
 			</h2>
 		</c:if>
  
- 
 	</sec:authorize>
+	<jsp:include page="fragments/footer.jsp" />
 </body>
 </html>
