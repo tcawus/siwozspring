@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS `Employee`;
 DROP TABLE IF EXISTS `Patient2Company`;
 DROP TABLE IF EXISTS `Company`;
 DROP TABLE IF EXISTS `Patient`;
+DROP TABLE IF EXISTS `User_roles`;
 DROP TABLE IF EXISTS `Users`;
 DROP TABLE IF EXISTS `EmployeeStatus`;
 DROP TABLE IF EXISTS `Address`;
@@ -13,11 +14,24 @@ CREATE TABLE Users (
 	name VARCHAR(64),
 	surname VARCHAR(128),
 	email VARCHAR(128),
-	pass VARCHAR(256),
+	username VARCHAR(128) not null,
+	password VARCHAR(256),
 	pesel CHAR(11),
 	registerDate TIMESTAMP,
+	enabled TINYINT NOT NULL DEFAULT 1 ,
 	PRIMARY KEY(id)
 ) DEFAULT CHARSET=utf8;
+
+CREATE TABLE User_roles (
+  user_role_id INT(11) NOT NULL AUTO_INCREMENT,
+  username VARCHAR(45) NOT NULL,
+  ROLE VARCHAR(45) NOT NULL,
+  user_id INT,
+  PRIMARY KEY (user_role_id),
+  UNIQUE KEY uni_username_role (ROLE,username),
+  KEY fk_username_idx (username),
+  CONSTRAINT fk_username FOREIGN KEY (user_id) REFERENCES users (id)
+  ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE Address (
 	id INT AUTO_INCREMENT,
