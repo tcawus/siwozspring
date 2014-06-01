@@ -33,4 +33,14 @@ public class UsersRepository extends AbstractRepository<Users> {
 		return Lists.newArrayList(Iterables.filter(queryResult, Users.class))
 				.get(0);
 	}
+
+	public Users getByUsername(String username) {
+		Query query = getSession().createQuery(
+				"from Users where username='" + username + "'");
+		List<?> queryResult = query.list();
+		if (queryResult.size() == 0)
+			return null;
+		return Lists.newArrayList(Iterables.filter(queryResult, Users.class))
+				.get(0);
+	}
 }

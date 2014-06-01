@@ -1,15 +1,12 @@
 package org.siwoz.service.index;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import javax.annotation.Resource;
 
 import org.siwoz.dao.model.Users;
 import org.siwoz.dao.repos.UsersRepository;
 import org.siwoz.model.forms.register.RegisterBean;
-import org.siwoz.util.Converter;
 import org.springframework.context.MessageSource;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,19 +28,28 @@ public class AccountManagerService {
 			userAlreadyExists = true;
 	}
 
+	public void checkIfUserExistsUN(String username) {
+		if (usersRepository.getByUsername(username) != null)
+			userAlreadyExists = true;
+	}
+
 	public void register(RegisterBean registerBean) {
-		MessageDigest messageDigest;
+		// MessageDigest messageDigest;
 		try {
-			messageDigest = MessageDigest.getInstance("SHA-256");
-			messageDigest.update(registerBean.getPass().getBytes());
+			// messageDigest = MessageDigest.getInstance("SHA-256");
+			// messageDigest.update(registerBean.getPassword().getBytes());
+
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			String hashedPassword = passwordEncoder.encode(registerBean
+					.getPassword());
 
 			Users user = new Users();
-			user.setUsername(registerBean.getName());
+			user.setUsername(registerBean.getUsername());
 			user.setSurname(registerBean.getSurname());
 			user.setEmail(registerBean.getEmail());
-			user.setPassword(Converter.hashToString(messageDigest.digest()));
+			user.setPassword(hashedPassword);
 			usersRepository.add(user);
-		} catch (NoSuchAlgorithmException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			problemsWithRegister = true;

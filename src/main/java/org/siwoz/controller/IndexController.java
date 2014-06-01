@@ -65,7 +65,7 @@ public class IndexController {
 					messageSource.getMessage("passesNotEqual", null, null));
 			return mav;
 		}
-		accountManagerService.checkIfUserExists(registerBean.getEmail());
+		accountManagerService.checkIfUserExistsUN(registerBean.getUsername());
 		accountManagerService.register(registerBean);
 		return new ModelAndView("register", "registrationResult",
 				accountManagerService.getRegistrationResult());
