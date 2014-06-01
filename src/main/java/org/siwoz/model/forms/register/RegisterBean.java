@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.ScriptAssert;
 
-@ScriptAssert(lang = "javascript", script = "_this.passVerify.equals(_this.pass)")
+@ScriptAssert(lang = "javascript", script = "_this.passwordVerify.equals(_this.password)")
 public class RegisterBean {
 
 	@NotBlank
@@ -61,8 +61,8 @@ public class RegisterBean {
 		return passwordVerify;
 	}
 
-	public void setPasswordVerify(String passVerify) {
-		this.passwordVerify = passVerify;
+	public void setPasswordVerify(String passwordVerify) {
+		this.passwordVerify = passwordVerify;
 	}
 
 	public String getUserType() {

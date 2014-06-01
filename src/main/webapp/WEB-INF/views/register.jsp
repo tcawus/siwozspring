@@ -6,7 +6,6 @@
 <body>
 	<div id="form">
 		<form:form method="post" modelAttribute="registerBean">
-			<form:form method="post" modelAttribute="registerBean">
 			<form:label path="name" />
 			<span id=".inputLabel">Imie:</span>
 			<form:input path="name" />
@@ -48,7 +47,6 @@
 			<form:errors path="userType" cssClass="errors" />
 			<br />
 			<input type="submit" value="Zarejestruj" />
-		</form:form>
 		</form:form>
 		${registrationResult}
 	</div>
