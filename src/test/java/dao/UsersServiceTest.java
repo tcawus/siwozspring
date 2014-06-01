@@ -16,8 +16,8 @@ public class UsersServiceTest extends DaoTestScheme<Users> {
 	@Before
 	public void insertObjectBeforeTest() {
 		Users user = new Users();
-		user.setName("MyNameIs");
-		user.setPass("45678976543ergmjy65yd");
+		user.setUsername("MyNameIs");
+		user.setPassword("45678976543ergmjy65yd");
 		user.setPesel("1234567890");
 		user.setRegisterDate(new Date());
 		usersService.add(user);
@@ -38,7 +38,7 @@ public class UsersServiceTest extends DaoTestScheme<Users> {
 
 	@Override
 	protected void setObjectToUpdate(Object object) {
-		((Users) object).setName("MyNameIs2");
+		((Users) object).setUsername("MyNameIs2");
 		objectToUpdate = object;
 	}
 }
