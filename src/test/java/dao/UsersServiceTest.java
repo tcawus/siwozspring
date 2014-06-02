@@ -16,11 +16,8 @@ public class UsersServiceTest extends DaoTestScheme<Users> {
 	@Before
 	public void insertObjectBeforeTest() {
 		Users user = new Users();
-<<<<<<< HEAD
 		user.setName("MyNameIs");
-=======
 		user.setUsername("MyNameIs");
->>>>>>> 774f0dc7c3ca4a5d4f64487284ee2430eed137bd
 		user.setPassword("45678976543ergmjy65yd");
 		user.setPesel("1234567890");
 		user.setRegisterDate(new Date());

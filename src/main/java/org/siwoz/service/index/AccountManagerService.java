@@ -1,12 +1,14 @@
 package org.siwoz.service.index;
 
+import java.security.MessageDigest;
+
 import javax.annotation.Resource;
 
 import org.siwoz.dao.model.Users;
 import org.siwoz.dao.repos.UsersRepository;
 import org.siwoz.model.forms.register.RegisterBean;
+import org.siwoz.util.Converter;
 import org.springframework.context.MessageSource;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,25 +36,16 @@ public class AccountManagerService {
 	}
 
 	public void register(RegisterBean registerBean) {
-		// MessageDigest messageDigest;
+		MessageDigest messageDigest;
 		try {
-			// messageDigest = MessageDigest.getInstance("SHA-256");
-			// messageDigest.update(registerBean.getPassword().getBytes());
-
-			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			String hashedPassword = passwordEncoder.encode(registerBean
-					.getPassword());
+			messageDigest = MessageDigest.getInstance("SHA-256");
+			messageDigest.update(registerBean.getPassword().getBytes());
 
 			Users user = new Users();
-			user.setUsername(registerBean.getUsername());
+			user.setName(registerBean.getUsername());
 			user.setSurname(registerBean.getSurname());
-<<<<<<< HEAD
 			user.setUsername(registerBean.getEmail());
 			user.setPassword(Converter.hashToString(messageDigest.digest()));
-=======
-			user.setEmail(registerBean.getEmail());
-			user.setPassword(hashedPassword);
->>>>>>> 774f0dc7c3ca4a5d4f64487284ee2430eed137bd
 			usersRepository.add(user);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
