@@ -7,12 +7,12 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.ScriptAssert;
 
-@ScriptAssert(lang = "javascript", script = "_this.passVerify.equals(_this.pass)")
+@ScriptAssert(lang = "javascript", script = "_this.passwordVerify.equals(_this.password)")
 public class RegisterBean {
 
 	@NotBlank
 	@Length(min = 2, max = 20)
-	private String name, surname;
+	private String username, surname;
 
 	@NotBlank
 	@Length(max = 40)
@@ -21,16 +21,16 @@ public class RegisterBean {
 
 	@NotBlank
 	@Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{7,15})")
-	private String pass, passVerify;
+	private String password, passwordVerify;
 
 	private String userType;
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getSurname() {
@@ -49,20 +49,20 @@ public class RegisterBean {
 		this.email = email;
 	}
 
-	public String getPass() {
-		return pass;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getPassVerify() {
-		return passVerify;
+	public String getPasswordVerify() {
+		return passwordVerify;
 	}
 
-	public void setPassVerify(String passVerify) {
-		this.passVerify = passVerify;
+	public void setPasswordVerify(String passwordVerify) {
+		this.passwordVerify = passwordVerify;
 	}
 
 	public String getUserType() {
@@ -74,7 +74,7 @@ public class RegisterBean {
 	}
 
 	public void clearPasswords() {
-		pass = "";
-		passVerify = "";
+		password = "";
+		passwordVerify = "";
 	}
 }

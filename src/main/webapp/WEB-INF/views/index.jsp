@@ -13,6 +13,7 @@
 			<input type="hidden" name="${_csrf.parameterName}"
 				value="${_csrf.token}" />
 		</form>
+		
 		<script>
 			function formSubmit() {
 				document.getElementById("logoutForm").submit();
@@ -26,7 +27,18 @@
 			</h2>
 		</c:if>
  
+<<<<<<< HEAD
+=======
+
+>>>>>>> 774f0dc7c3ca4a5d4f64487284ee2430eed137bd
 	</sec:authorize>
+	
+	
 	<jsp:include page="fragments/footer.jsp" />
+<<<<<<< HEAD
+=======
+
+ 
+>>>>>>> 774f0dc7c3ca4a5d4f64487284ee2430eed137bd
 </body>
 </html>

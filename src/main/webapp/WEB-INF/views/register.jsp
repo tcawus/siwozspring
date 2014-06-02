@@ -21,15 +21,25 @@
 			<form:input path="email" />
 			<form:errors path="email" cssClass="errors" />
 			<br />
-			<form:label path="pass" />
-			<span id=".inputLabel">Hasło:</span>
-			<form:password path="pass" />
-			<form:errors path="pass" cssClass="errors" />
+			<form:label path="username" />
+			<span id=".inputLabel">Username:</span>
+			<form:input path="username" />
+			<form:errors path="username" cssClass="errors" />
 			<br />
-			<form:label path="passVerify" />
+			<form:label path="password" />
+			<span id=".inputLabel">Hasło:</span>
+			<form:password path="password" />
+			<form:errors path="password" cssClass="errors" />
+			<br />
+			<form:label path="passwordVerify" />
 			<span id=".inputLabel">Powtórz hasło:</span>
-			<form:password path="passVerify" />
-			<form:errors path="passVerify" cssClass="errors" />
+			<form:password path="passwordVerify" />
+			<form:errors path="passwordVerify" cssClass="errors" />
+			<br />
+			<form:label path="pesel" />
+			<span id=".inputLabel">Pesel:</span>
+			<form:input path="pesel" />
+			<form:errors path="pesel" cssClass="errors" />
 			<br />
 			<form:label path="userType" />
 			<span id=".inputLabel">Rodzaj współpracy:</span>

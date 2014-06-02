@@ -19,7 +19,7 @@ public class Users implements Serializable {
 	private long id;
 
 	@Column
-	private String name;
+	private String username;
 
 	@Column
 	private String surname;
@@ -67,12 +67,12 @@ public class Users implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getSurname() {
@@ -83,6 +83,17 @@ public class Users implements Serializable {
 		this.surname = surname;
 	}
 
+<<<<<<< HEAD
+=======
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+>>>>>>> 774f0dc7c3ca4a5d4f64487284ee2430eed137bd
 	public String getPesel() {
 		return pesel;
 	}
@@ -91,8 +102,15 @@ public class Users implements Serializable {
 		this.pesel = pesel;
 	}
 
+<<<<<<< HEAD
 	public String getPassword() {
 		return password;
+=======
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", surname=" + surname
+				+ ", password=" + password + ", pesel=" + pesel + "]";
+>>>>>>> 774f0dc7c3ca4a5d4f64487284ee2430eed137bd
 	}
 
 	public void setPassword(String password) {
