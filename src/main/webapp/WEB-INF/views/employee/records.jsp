@@ -25,7 +25,7 @@
 	<c:if test="${records != null}">
 		<div id="accordion">
 			<c:forEach var="record" items="${records}">
-				<h3>${record.getFullName()} ${record.getVisitDate()}</h3>
+				<h3>${record.getFullName()}    ${record.getVisitDate()}</h3>
 				<div>${record.getDescription()}</div>				
 			</c:forEach>
 		</div>

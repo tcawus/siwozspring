@@ -18,7 +18,7 @@ CREATE TABLE Users (
 	password VARCHAR(256),
 	pesel CHAR(11),
 	registerDate TIMESTAMP,
-	enabled TINYINT NOT NULL DEFAULT 1 ,
+	enabled BOOLEAN NOT NULL DEFAULT 0 ,
 	PRIMARY KEY(id)
 ) DEFAULT CHARSET=utf8;
 

@@ -26,7 +26,7 @@ public class UsersRepository extends AbstractRepository<Users> {
 
 	public Users getByEmail(String email) {
 		Query query = getSession().createQuery(
-				"from Users where email='" + email + "'");
+				"from Users where username='" + email + "'");
 		List<?> queryResult = query.list();
 		if (queryResult.size() == 0)
 			return null;

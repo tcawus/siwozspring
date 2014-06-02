@@ -40,8 +40,8 @@ public class AccountManagerService {
 			Users user = new Users();
 			user.setName(registerBean.getName());
 			user.setSurname(registerBean.getSurname());
-			user.setEmail(registerBean.getEmail());
-			user.setPass(Converter.hashToString(messageDigest.digest()));
+			user.setUsername(registerBean.getEmail());
+			user.setPassword(Converter.hashToString(messageDigest.digest()));
 			usersRepository.add(user);
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
