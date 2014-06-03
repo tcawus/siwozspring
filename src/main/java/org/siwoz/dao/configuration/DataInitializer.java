@@ -44,6 +44,9 @@ public class DataInitializer {
 	@Value("classpath:db/data/db-patient2company-data.sql")
 	private Resource patient2CompanyDataScript;
 
+	@Value("classpath:db/data/db-visitdescription-data.sql")
+	private Resource visitDescriptionScript;
+
 	@Autowired
 	DataSource restDataSource;
 
@@ -64,8 +67,9 @@ public class DataInitializer {
 		populator.addScript(patientDataScript);
 		populator.addScript(employeeStatusDataScript);
 		populator.addScript(companyDataScript);
-		populator.addScript(employeeDataScript);	
+		populator.addScript(employeeDataScript);
 		populator.addScript(patient2CompanyDataScript);
+		populator.addScript(visitDescriptionScript);
 		populator.addScript(visitDataScript);
 		populator.addScript(historicalVisitDataScript);
 		return populator;

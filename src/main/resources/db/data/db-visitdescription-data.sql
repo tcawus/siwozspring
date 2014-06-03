@@ -1,0 +1,1 @@
+INSERT INTO VisitDescription (id, description) VALUES (1, '1.Plomba na V.<br/> 2.Wyrwanie VIII');

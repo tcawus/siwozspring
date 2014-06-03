@@ -15,7 +15,6 @@ import org.siwoz.filter.PatientDataForHistoricalVisitFilter;
 import org.siwoz.filter.PatientsForHistoricalVisitFilter;
 import org.siwoz.model.forms.employee.PatientRecordFormBean;
 import org.siwoz.model.forms.employee.PatientVisitDataBean;
-import org.siwoz.util.TextGenerator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,8 +48,8 @@ public class HistoricalVisitService implements IService<HistoricalVisit> {
 			List<PatientVisitDataBean> visitDataList = Lists.newArrayList();
 			for (HistoricalVisit visit : filter.doFilter(cachedList)) {
 				PatientVisitDataBean patientVisitDataBean = new PatientVisitDataBean(
-						formBean.getName(), TextGenerator.generateString(
-								"abcdef", 300), visit.getVisitDate());
+						formBean.getName(), visit.getIdDescription()
+								.getDescription(), visit.getVisitDate());
 				visitDataList.add(patientVisitDataBean);
 			}
 			return visitDataList;

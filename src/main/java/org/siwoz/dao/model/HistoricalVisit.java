@@ -26,6 +26,10 @@ public class HistoricalVisit {
 	@JoinColumn(name = "idPatient2Company", updatable = true, insertable = true)
 	private Patient2Company idPatient2Company;
 
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = VisitDescription.class)
+	@JoinColumn(name = "idDescription", updatable = true, insertable = true)
+	private VisitDescription idDescription;
+
 	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Employee.class)
 	@JoinColumn(name = "idEmployee", updatable = true, insertable = true)
 	private Employee idEmployee;
@@ -44,6 +48,14 @@ public class HistoricalVisit {
 
 	public void setVisitDate(Date visitDate) {
 		this.visitDate = visitDate;
+	}
+
+	public VisitDescription getIdDescription() {
+		return idDescription;
+	}
+
+	public void setIdDescription(VisitDescription idDescription) {
+		this.idDescription = idDescription;
 	}
 
 	public Patient2Company getIdPatient2Company() {

@@ -23,7 +23,7 @@ public class PatientDataForHistoricalVisitFilter implements
 		for (HistoricalVisit historicalVisit : input) {
 			Users user = historicalVisit.getIdPatient2Company().getIdPatient()
 					.getIdUser();
-			String currentName = user.getUsername() + " " + user.getSurname();
+			String currentName = user.getName() + " " + user.getSurname();
 			if (currentName.equals(name)) {
 				historicalVisits.add(historicalVisit);
 			}

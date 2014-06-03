@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS `Visit`;
 DROP TABLE IF EXISTS `HistoricalVisit`;
+DROP TABLE IF EXISTS `VisitDescription`;
 DROP TABLE IF EXISTS `Employee`;
 DROP TABLE IF EXISTS `Patient2Company`;
 DROP TABLE IF EXISTS `Company`;
@@ -86,13 +87,21 @@ CREATE TABLE Patient2Company (
 	PRIMARY KEY(id)
 )  DEFAULT CHARSET=utf8;
 
+CREATE TABLE VisitDescription (
+	id INT AUTO_INCREMENT,
+	description varchar(512),
+	PRIMARY KEY(id)
+) DEFAULT CHARSET=utf8;
+
 CREATE TABLE Visit (
 	id INT AUTO_INCREMENT,
 	visitDate TIMESTAMP,
 	idPatient2Company INT,
 	idEmployee INT,
+	idDescription INT,
 	FOREIGN KEY(idPatient2Company) REFERENCES Patient2Company(id),
 	FOREIGN KEY(idEmployee) REFERENCES Employee(id),
+	FOREIGN KEY(idDescription) REFERENCES VisitDescription(id),
 	PRIMARY KEY(id)
 )  DEFAULT CHARSET=utf8;
 
@@ -101,7 +110,9 @@ CREATE TABLE HistoricalVisit (
 	visitDate TIMESTAMP,
 	idPatient2Company INT,
 	idEmployee INT,
+	idDescription INT,
 	FOREIGN KEY(idPatient2Company) REFERENCES Patient2Company(id),
 	FOREIGN KEY(idEmployee) REFERENCES Employee(id),
+	FOREIGN KEY(idDescription) REFERENCES VisitDescription(id),
 	PRIMARY KEY(id)
 )  DEFAULT CHARSET=utf8;
