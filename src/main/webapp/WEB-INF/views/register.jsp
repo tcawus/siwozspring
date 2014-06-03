@@ -16,15 +16,15 @@
 			<form:input path="surname" />
 			<form:errors path="surname" cssClass="errors" />
 			<br />
-			<form:label path="email" />
-			<span id=".inputLabel">Email:</span>
-			<form:input path="email" />
-			<form:errors path="email" cssClass="errors" />
-			<br />
 			<form:label path="username" />
-			<span id=".inputLabel">Username:</span>
+			<span id=".inputLabel">Email:</span>
 			<form:input path="username" />
 			<form:errors path="username" cssClass="errors" />
+			<br />
+			<form:label path="pesel" />
+			<span id=".inputLabel">Pesel(opcjonalnie):</span>
+			<form:input path="pesel" />
+			<form:errors path="pesel" cssClass="errors" />
 			<br />
 			<form:label path="password" />
 			<span id=".inputLabel">Hasło:</span>
@@ -35,11 +35,6 @@
 			<span id=".inputLabel">Powtórz hasło:</span>
 			<form:password path="passwordVerify" />
 			<form:errors path="passwordVerify" cssClass="errors" />
-			<br />
-			<form:label path="pesel" />
-			<span id=".inputLabel">Pesel:</span>
-			<form:input path="pesel" />
-			<form:errors path="pesel" cssClass="errors" />
 			<br />
 			<form:label path="userType" />
 			<span id=".inputLabel">Rodzaj współpracy:</span>

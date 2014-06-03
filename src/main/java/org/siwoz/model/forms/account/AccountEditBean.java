@@ -1,4 +1,4 @@
-package org.siwoz.model.forms.register;
+package org.siwoz.model.forms.account;
 
 import javax.validation.constraints.Pattern;
 
@@ -8,8 +8,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.ScriptAssert;
 
 @ScriptAssert(lang = "javascript", script = "_this.passwordVerify.equals(_this.password)")
-public class RegisterBean {
-
+public class AccountEditBean {
 	@NotBlank
 	@Length(min = 2, max = 20)
 	private String name, surname;
@@ -24,8 +23,6 @@ public class RegisterBean {
 	@NotBlank
 	@Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{7,15})")
 	private String password, passwordVerify;
-
-	private String userType;
 
 	public String getName() {
 		return name;
@@ -73,14 +70,6 @@ public class RegisterBean {
 
 	public void setPasswordVerify(String passwordVerify) {
 		this.passwordVerify = passwordVerify;
-	}
-
-	public String getUserType() {
-		return userType;
-	}
-
-	public void setUserType(String userType) {
-		this.userType = userType;
 	}
 
 	public void clearPasswords() {

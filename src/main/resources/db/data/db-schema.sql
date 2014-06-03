@@ -14,7 +14,6 @@ CREATE TABLE Users (
 	id INT AUTO_INCREMENT,
 	name VARCHAR(64),
 	surname VARCHAR(128),
-	email VARCHAR(128),
 	username VARCHAR(128) not null,
 	password VARCHAR(256),
 	pesel CHAR(11),

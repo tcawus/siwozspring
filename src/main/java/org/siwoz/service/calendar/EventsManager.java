@@ -1,8 +1,5 @@
 package org.siwoz.service.calendar;
 
-import java.util.ArrayList;
-
-import javax.servlet.http.HttpServletRequest;
 
 
 

@@ -1,20 +1,18 @@
 package org.siwoz.service.index;
 
-import java.security.MessageDigest;
-
 import javax.annotation.Resource;
 
 import org.siwoz.dao.model.Users;
 import org.siwoz.dao.repos.UsersRepository;
 import org.siwoz.model.forms.register.RegisterBean;
-import org.siwoz.util.Converter;
 import org.springframework.context.MessageSource;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service("accountManagerService")
+@Service("registerService")
 @Transactional
-public class AccountManagerService {
+public class RegistrationService {
 
 	@Resource(name = "usersRepository")
 	UsersRepository usersRepository;
@@ -36,16 +34,14 @@ public class AccountManagerService {
 	}
 
 	public void register(RegisterBean registerBean) {
-		MessageDigest messageDigest;
 		try {
-			messageDigest = MessageDigest.getInstance("SHA-256");
-			messageDigest.update(registerBean.getPassword().getBytes());
-
 			Users user = new Users();
-			user.setName(registerBean.getUsername());
+			user.setName(registerBean.getName());
 			user.setSurname(registerBean.getSurname());
-			user.setUsername(registerBean.getEmail());
-			user.setPassword(Converter.hashToString(messageDigest.digest()));
+			user.setUsername(registerBean.getUsername());
+			user.setPesel(registerBean.getPesel());
+			user.setPassword(BCrypt.hashpw(registerBean.getPassword(),
+					BCrypt.gensalt()));
 			usersRepository.add(user);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

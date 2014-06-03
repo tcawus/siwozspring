@@ -5,7 +5,7 @@
 <head><jsp:include page="../fragments/headTag.jsp" /></head>
 <body>
 	<div id="form">
-		<!-- <form:form method="post" modelAttribute="accountBean">
+		<form:form method="post" modelAttribute="accountBean">
 			<form:label path="name" />
 			<span id=".inputLabel">Imie:</span>
 			<form:input path="name" />
@@ -31,14 +31,9 @@
 			<form:password path="passVerify" />
 			<form:errors path="passVerify" cssClass="errors" />
 			<br />
-			<form:label path="userType" />
-			<span id=".inputLabel">Rodzaj współpracy:</span>
-			<form:select path="userType" items="${userType}" />
-			<form:errors path="userType" cssClass="errors" />
-			<br />
 			<input type="submit" value="Zarejestruj" />
-		</form:form> 
-		${registrationResult}-->
+		</form:form>
+		${editResult}
 	</div>
 	<form:form method="post" action="/delete"
 		onsubmit="javascript:alert('Konto pomyślnie usunięte');">
