@@ -5,9 +5,11 @@ import java.io.IOException;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.siwoz.dao.model.Users;
 import org.siwoz.model.forms.account.AccountEditBean;
 import org.siwoz.service.account.AccountPropertiesService;
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,6 +28,14 @@ public class AccountController {
 	MessageSource messageSource;
 
 	private AccountEditBean cachedAccountBean;
+	private Users user;
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String accountEditIndex(Model model) throws IOException {
+		user = (Users) SecurityContextHolder.getContext().getAuthentication()
+				.getPrincipal();
+		return "account/edit";
+	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public String editAccount(Model model) throws IOException {
@@ -35,8 +45,9 @@ public class AccountController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public ModelAndView registerFormSubmitted(@Valid AccountEditBean accountEditBean,
-			BindingResult bindingResult) throws IOException {
+	public ModelAndView registerFormSubmitted(
+			@Valid AccountEditBean accountEditBean, BindingResult bindingResult)
+			throws IOException {
 		if (bindingResult.hasErrors()) {
 			ModelAndView mav = new ModelAndView();
 			accountEditBean.clearPasswords();
@@ -45,14 +56,14 @@ public class AccountController {
 					messageSource.getMessage("passesNotEqual", null, null));
 			return mav;
 		}
-		accountPropertiesService.updateProperties(1, accountEditBean);
+		accountPropertiesService.updateProperties(user, accountEditBean);
 		return new ModelAndView("register", "editResult",
 				accountPropertiesService.getUpdateResult());
 	}
 
 	@RequestMapping(value = "/edit/delete", method = RequestMethod.POST)
 	public String deleteAccount(Model model) throws IOException {
-		accountPropertiesService.deleteAccount(1);
+		accountPropertiesService.deleteAccount(user);
 		return "index";
 	}
 }

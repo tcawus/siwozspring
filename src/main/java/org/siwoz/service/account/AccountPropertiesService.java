@@ -21,7 +21,7 @@ public class AccountPropertiesService {
 
 	String updateResult;
 
-	public AccountEditBean getCurrentProperties(int userId) {
+	public AccountEditBean getCurrentProperties(long userId) {
 		Users currentUser = usersRepository.getById(userId);
 		AccountEditBean accountEditBean = new AccountEditBean();
 		accountEditBean.setName(currentUser.getName());
@@ -32,12 +32,18 @@ public class AccountPropertiesService {
 		return accountEditBean;
 	}
 
-	public void deleteAccount(int i) {
-		// usersRepository.delete(object);
+	public void deleteAccount(Users user) {
+		usersRepository.delete(user);
 	}
 
-	public void updateProperties(int i, AccountEditBean accountEditBean) {
+	public void updateProperties(Users user, AccountEditBean accountEditBean) {
 		// TODO Auto-generated method stub
+		user.setName(accountEditBean.getName());
+		user.setSurname(accountEditBean.getSurname());
+		user.setUsername(accountEditBean.getUsername());
+		if (accountEditBean.getPesel() != null)
+			user.setPesel(accountEditBean.getPesel());
+		usersRepository.update(user);
 		updateResult = messageSource.getMessage("updateAccountSuccess", null,
 				null);
 	}
