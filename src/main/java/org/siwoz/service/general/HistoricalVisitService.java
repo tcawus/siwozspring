@@ -92,7 +92,7 @@ public class HistoricalVisitService implements IService<HistoricalVisit> {
 		for (HistoricalVisit historicalVisit : cachedList) {
 			Patient patient = historicalVisit.getIdPatient2Company()
 					.getIdPatient();
-			String fullName = patient.getIdUser().getUsername() + " "
+			String fullName = patient.getIdUser().getName() + " "
 					+ patient.getIdUser().getSurname();
 			patients.put(fullName, fullName);
 		}
