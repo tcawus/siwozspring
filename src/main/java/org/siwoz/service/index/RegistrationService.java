@@ -6,7 +6,7 @@ import org.siwoz.dao.model.Users;
 import org.siwoz.dao.repos.UsersRepository;
 import org.siwoz.model.forms.register.RegisterBean;
 import org.springframework.context.MessageSource;
-import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,8 +40,10 @@ public class RegistrationService {
 			user.setSurname(registerBean.getSurname());
 			user.setUsername(registerBean.getUsername());
 			user.setPesel(registerBean.getPesel());
-			user.setPassword(BCrypt.hashpw(registerBean.getPassword(),
-					BCrypt.gensalt()));
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			System.out.println("-" + registerBean.getPassword() + "-");
+			user.setPassword(passwordEncoder.encode(registerBean.getPassword()));
+			System.out.println("-" + user.getPassword() + "-");
 			usersRepository.add(user);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

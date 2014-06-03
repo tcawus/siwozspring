@@ -27,17 +27,17 @@
 			<form:errors path="pesel" cssClass="errors" />
 			<br />
 			<form:label path="password" />
-			<span id=".inputLabel">Hasło:</span>
+			<span id=".inputLabel">Haslo:</span>
 			<form:password path="password" />
 			<form:errors path="password" cssClass="errors" />
 			<br />
 			<form:label path="passwordVerify" />
-			<span id=".inputLabel">Powtórz hasło:</span>
+			<span id=".inputLabel">Powtorz haslo:</span>
 			<form:password path="passwordVerify" />
 			<form:errors path="passwordVerify" cssClass="errors" />
 			<br />
 			<form:label path="userType" />
-			<span id=".inputLabel">Rodzaj współpracy:</span>
+			<span id=".inputLabel">Rodzaj wspolpracy:</span>
 			<form:select path="userType" items="${userType}" />
 			<form:errors path="userType" cssClass="errors" />
 			<br />
