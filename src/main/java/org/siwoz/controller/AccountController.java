@@ -1,6 +1,7 @@
 package org.siwoz.controller;
 
 import java.io.IOException;
+import java.security.Principal;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -9,7 +10,6 @@ import org.siwoz.dao.model.Users;
 import org.siwoz.model.forms.account.AccountEditBean;
 import org.siwoz.service.account.AccountPropertiesService;
 import org.springframework.context.MessageSource;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,18 +28,21 @@ public class AccountController {
 	MessageSource messageSource;
 
 	private AccountEditBean cachedAccountBean;
-	private Users user;
+	private Users currentUser;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String accountEditIndex(Model model) throws IOException {
-		user = (Users) SecurityContextHolder.getContext().getAuthentication()
-				.getPrincipal();
+	public String accountEditIndex(Model model, Principal principal)
+			throws IOException {
+		System.out.println(principal.getName());
+		// currentUser = accountPropertiesService.getUserByEmail(user
+		// .getUsername());
 		return "account/edit";
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public String editAccount(Model model) throws IOException {
-		cachedAccountBean = accountPropertiesService.getCurrentProperties(1);
+		cachedAccountBean = accountPropertiesService
+				.getCurrentProperties(currentUser.getId());
 		model.addAttribute("accountBean", cachedAccountBean);
 		return "account/edit";
 	}
@@ -56,14 +59,14 @@ public class AccountController {
 					messageSource.getMessage("passesNotEqual", null, null));
 			return mav;
 		}
-		accountPropertiesService.updateProperties(user, accountEditBean);
+		accountPropertiesService.updateProperties(currentUser, accountEditBean);
 		return new ModelAndView("register", "editResult",
 				accountPropertiesService.getUpdateResult());
 	}
 
 	@RequestMapping(value = "/edit/delete", method = RequestMethod.POST)
 	public String deleteAccount(Model model) throws IOException {
-		accountPropertiesService.deleteAccount(user);
+		accountPropertiesService.deleteAccount(currentUser);
 		return "index";
 	}
 }

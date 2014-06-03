@@ -184,6 +184,7 @@
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.1</version>
 				<configuration>
+					<charset>UTF-8</charset>
 					<server>tomcat-development-server</server>
 					<port>8080</port>
 					<path>/siwoz</path>

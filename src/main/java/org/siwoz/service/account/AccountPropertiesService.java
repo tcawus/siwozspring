@@ -51,4 +51,8 @@ public class AccountPropertiesService {
 	public String getUpdateResult() {
 		return updateResult;
 	}
+
+	public Users getUserByEmail(String username) {
+		return usersRepository.getByEmail(username);
+	}
 }

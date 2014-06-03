@@ -16,22 +16,22 @@
 			<form:input path="surname" />
 			<form:errors path="surname" cssClass="errors" />
 			<br />
-			<form:label path="email" />
+			<form:label path="username" />
 			<span id=".inputLabel">Email:</span>
-			<form:input path="email" />
-			<form:errors path="email" cssClass="errors" />
+			<form:input path="username" />
+			<form:errors path="username" cssClass="errors" />
 			<br />
-			<form:label path="pass" />
+			<form:label path="password" />
 			<span id=".inputLabel">Hasło:</span>
-			<form:password path="pass" />
-			<form:errors path="pass" cssClass="errors" />
+			<form:password path="password" />
+			<form:errors path="password" cssClass="errors" />
 			<br />
-			<form:label path="passVerify" />
+			<form:label path="passwordVerify" />
 			<span id=".inputLabel">Powtórz hasło:</span>
-			<form:password path="passVerify" />
-			<form:errors path="passVerify" cssClass="errors" />
+			<form:password path="passwordVerify" />
+			<form:errors path="passwordVerify" cssClass="errors" />
 			<br />
-			<input type="submit" value="Zarejestruj" />
+			<input type="submit" value="Uaktualnij" />
 		</form:form>
 		${editResult}
 	</div>
