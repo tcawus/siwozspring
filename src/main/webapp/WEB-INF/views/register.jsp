@@ -4,6 +4,8 @@
 <html>
 <head><jsp:include page="fragments/headTag.jsp" /></head>
 <body>
+<jsp:include page="fragments/menu.jsp" />
+
 	<div id="form">
 		<form:form method="post" modelAttribute="registerBean">
 			<form:label path="name" />

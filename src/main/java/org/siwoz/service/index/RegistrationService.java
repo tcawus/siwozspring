@@ -41,9 +41,9 @@ public class RegistrationService {
 			user.setUsername(registerBean.getUsername());
 			user.setPesel(registerBean.getPesel());
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-			System.out.println("-" + registerBean.getPassword() + "-");
+			// System.out.println("-" + registerBean.getPassword() + "-");
 			user.setPassword(passwordEncoder.encode(registerBean.getPassword()));
-			System.out.println("-" + user.getPassword() + "-");
+			// System.out.println("-" + user.getPassword() + "-");
 			usersRepository.add(user);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

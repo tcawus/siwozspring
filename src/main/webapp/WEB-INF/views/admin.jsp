@@ -2,6 +2,8 @@
 <%@page session="true"%>
 <html>
 <body>
+
+<jsp:include page="fragments/menu.jsp" />
 	<h1>Title : ${title}</h1>
 	<h1>Message : ${message}</h1>
  

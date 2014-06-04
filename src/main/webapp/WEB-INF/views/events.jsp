@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<jsp:include page="fragments/menu.jsp" />
+
 
 </body>
 </html>

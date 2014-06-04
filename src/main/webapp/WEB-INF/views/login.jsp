@@ -36,6 +36,7 @@
 </style>
 </head>
 <body onload='document.loginForm.username.focus();'>
+<jsp:include page="fragments/menu.jsp" />
 
 	<h1>Gabinet stomatologiczny</h1>
 	

@@ -1,6 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <body>
+
+<jsp:include page="fragments/menu.jsp" />
 	<h1>HTTP Status 403 - Access is denied</h1>
 
 	<c:choose>
