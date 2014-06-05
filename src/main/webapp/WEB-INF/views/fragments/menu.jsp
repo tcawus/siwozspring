@@ -9,12 +9,16 @@
   				<a href="${contextPath}/siwoz/register">Rejestracja</a>
   			</li>
   			<li>
-  				<a href="#">Services</a>
-  				<ul>
-  					<li><a href="#">Consulting</a></li>
-  					<li><a href="#">Sales</a></li>
-  					<li><a href="#">Support</a></li>
-  				</ul>
+  				<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+  				<a href="${contextPath}/siwoz/employee/records">Kartoteka pacjenta</a>
+  			</li>
+  			<li>
+  				<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+  				<a href="${contextPath}/siwoz/calendar">Kalendarz</a>
+  			</li>
+  			<li>
+  				<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+  				<a href="${contextPath}/siwoz/account/active">Aktywacja konta </a>
   			</li>
   		</ul>
   	</div>

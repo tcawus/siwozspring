@@ -13,6 +13,8 @@
 </script>
 </head>
 <body>
+<jsp:include page="fragments/menu.jsp" />
+
 	<div id="form">
 		<form:form method="post" modelAttribute="patientRecord">
 			<form:label path="name" />

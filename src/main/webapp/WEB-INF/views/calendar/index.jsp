@@ -9,6 +9,8 @@
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 </head>
 <body>
+<jsp:include page="fragments/menu.jsp" />
+
 
 </body>
 </html>
