@@ -1,9 +1,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page session="true"%>
 <html>
+<head>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/style.css" />
+</head>
 <body>
 
 <jsp:include page="fragments/menu.jsp" />
+<div id = "page">
 	<h1>Title : ${title}</h1>
 	<h1>Message : ${message}</h1>
  
@@ -24,6 +29,6 @@
 				href="javascript:formSubmit()"> Logout</a>
 		</h2>
 	</c:if>
- 
+ </div>
 </body>
 </html>

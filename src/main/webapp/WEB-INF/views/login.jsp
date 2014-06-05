@@ -33,11 +33,15 @@
 	-moz-border-radius: 2px;
 	border: 1px solid #000;
 }
+
+
 </style>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/style.css" />
 </head>
 <body onload='document.loginForm.username.focus();'>
 <jsp:include page="fragments/menu.jsp" />
-
+<div id = "page">
 	<h1>Gabinet stomatologiczny</h1>
 	
 	<c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -95,6 +99,7 @@
 			</form>
 		</div>
 </c:if>
+</div>
 
 
 

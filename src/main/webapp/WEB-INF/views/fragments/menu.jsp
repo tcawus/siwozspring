@@ -2,6 +2,10 @@
   		<ul class="nav">
   			<li>
   				<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+  				<a href="${contextPath}/siwoz/">Home</a>
+  			</li>
+  			<li>
+  				<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
   				<a href="${contextPath}/siwoz/login">Logowanie</a>
   			</li>
   			<li>

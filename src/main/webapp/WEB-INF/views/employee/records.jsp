@@ -11,10 +11,12 @@
 		});
 	});
 </script>
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/style.css" />
 </head>
 <body>
 <jsp:include page="fragments/menu.jsp" />
-
+<div id = "page">
 	<div id="form">
 		<form:form method="post" modelAttribute="patientRecord">
 			<form:label path="name" />
@@ -32,6 +34,6 @@
 			</c:forEach>
 		</div>
 	</c:if>
-
+</div>
 	<jsp:include page="../fragments/footer.jsp" />
 </body>

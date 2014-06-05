@@ -2,10 +2,14 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<head><jsp:include page="fragments/headTag.jsp" /></head>
+<head><jsp:include page="fragments/headTag.jsp" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/style.css" />
+</head>
 <body>
 <jsp:include page="fragments/menu.jsp" />
 
+<div id = "page">
 	<div id="form">
 		<form:form method="post" modelAttribute="registerBean">
 			<form:label path="name" />
@@ -47,5 +51,6 @@
 		</form:form>
 		${registrationResult}
 	</div>
+</div>
 	<jsp:include page="fragments/footer.jsp" />
 </body>

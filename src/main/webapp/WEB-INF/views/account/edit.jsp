@@ -2,9 +2,14 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-<head><jsp:include page="../fragments/headTag.jsp" /></head>
+<head>
+<jsp:include page="../fragments/headTag.jsp" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/style.css" />
+</head>
 <body>
 <jsp:include page="fragments/menu.jsp" />
+<div id = "page">
 	<div id="form">
 		<form:form method="post" modelAttribute="accountBean">
 			<form:label path="name" />
@@ -36,6 +41,7 @@
 		</form:form>
 		${editResult}
 	</div>
+</div>
 	<form:form method="post" action="/delete"
 		onsubmit="javascript:alert('Konto pomyślnie usunięte');">
 		<input type="submit" value="Usuń konto" />
