@@ -1,12 +1,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@page session="true"%>
 <html>
 <head>
+<jsp:include page="fragments/headTag.jsp" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 </head>
 <body>
-
+<div class="container">
 <jsp:include page="fragments/menu.jsp" />
 <div id = "page">
 	<h1>Title : ${title}</h1>
@@ -29,6 +31,7 @@
 				href="javascript:formSubmit()"> Logout</a>
 		</h2>
 	</c:if>
+ </div>
  </div>
 </body>
 </html>

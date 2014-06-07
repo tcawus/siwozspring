@@ -1,6 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <html>
 <head>
+<jsp:include page="fragments/headTag.jsp" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 </head>
