@@ -28,6 +28,7 @@
 	width: 300px;
 	padding: 20px;
 	margin: 100px auto;
+	margin-top: 5%;
 	background: #fff;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
@@ -49,17 +50,6 @@
 				User : ${pageContext.request.userPrincipal.name} | <a
 					href="javascript:formSubmit()"> Logout</a>
 			</h2>
-			<c:url value="/j_spring_security_logout" var="logoutUrl" />
-			<form action="${logoutUrl}" method="post" id="logoutForm">
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
-			</form>
-	
-			<script>
-			function formSubmit() {
-				document.getElementById("logoutForm").submit();
-			}
-			</script>
 	</c:if>
 
 	<c:if test="${pageContext.request.userPrincipal.name == null}">
@@ -89,10 +79,10 @@
 					<tr>
 						<td colspan='2'><input name="submit" type="submit"
 							value="submit" /></td>
-					</tr>
-					<h:link value="Nie masz konta? Zarejestruj się tutaj!" outcome="register" />
+					</tr>				
 				</table>
-	
+					<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+  					<a href="${contextPath}/register">Nie masz konta? Zarejestruj sie tutaj!</a>
 				<input type="hidden" name="${_csrf.parameterName}"
 					value="${_csrf.token}" />
 	

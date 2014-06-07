@@ -1,4 +1,5 @@
-<spring:url value="/resources/js/jquery-1.10.2.js" var="jQuery" />
+<spring:url value="/resources/js/jquery-1.10.2.js" var="jQuery">
+</spring:url>
 <script src="${jQuery}"></script>
 <spring:url value="/resources/js/jquery-ui-1.10.4.custom.js"
 	var="jQueryUI" />

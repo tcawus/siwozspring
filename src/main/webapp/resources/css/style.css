@@ -1,6 +1,19 @@
 body {
-	margin-left: 1%;
-	margin-top: 10%;
+	margin-left: auto;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	display: inline-block;
+	color:#333;
+  	text-align:center;
+  	font-family: arial;
+}
+
+#page {
+	margin-top: 5%;
+}
+
+.navigation {
+	display: block;
 }
 
 .inputLabel {
@@ -17,15 +30,12 @@ body {
 	color: green;
 }
 
+
 h1 {
   font-family: Helvetica;
   font-weight: 100;
 }
-body {
-  color:#333;
-  text-align:center;
-  font-family: arial;
-}
+
 
 .nav {
 	margin: 0px;
