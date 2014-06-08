@@ -1,21 +1,12 @@
 package org.siwoz.controller;
 
-import java.io.IOException;
-import java.security.Principal;
 
-import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.siwoz.dao.model.Users;
 import org.siwoz.dao.repos.User_rolesRepository;
 import org.siwoz.model.forms.account.AccountEditBean;
 import org.siwoz.service.account.AccountPropertiesService;
-<<<<<<< HEAD
-import org.siwoz.service.account.ActiveFormBean;
-import org.siwoz.service.general.User_rolesService;
-=======
-import org.siwoz.service.general.HistoricalVisitService;
->>>>>>> 74ed6a108b807a73e8588c172de7f08a4c7c609c
 import org.siwoz.service.general.UsersService;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -40,9 +31,6 @@ public class AccountController {
 	
 	@Resource(name = "user_rolesService")
 	User_rolesService user_rolesService;
-
-	@Resource(name = "usersService")
-	UsersService usersService;
 
 	private AccountEditBean cachedAccountBean;
 	private Users currentUser;
@@ -73,12 +61,6 @@ public class AccountController {
 		return new ModelAndView("register", "editResult",
 				accountPropertiesService.getUpdateResult());
 	}
-<<<<<<< HEAD
-=======
-
-	@Resource(name = "historicalVisitService")
-	HistoricalVisitService historicalVisitService;
->>>>>>> 74ed6a108b807a73e8588c172de7f08a4c7c609c
 
 	@RequestMapping(value = "/active", method = RequestMethod.GET)
 	public String usersChooser(Model model) throws IOException {
