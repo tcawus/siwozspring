@@ -10,7 +10,7 @@
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 </head>
 <body onload='document.loginForm.username.focus();'>
-	<div class="container">
+		<div class="container">
 		<jsp:include page="fragments/menu.jsp" />
 		<div id="page">
 			<c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -55,8 +55,6 @@
 
 			</c:if>
 		</div>
-
 	</div>
-
 </body>
 </html>
