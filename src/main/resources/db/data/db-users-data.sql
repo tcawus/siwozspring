@@ -2,6 +2,7 @@ INSERT INTO Users (name, surname, username, pesel, password, enabled) VALUES ('J
 INSERT INTO Users (name, surname, username, pesel, password) VALUES ('Jan', 'Nowak', 'jan.nowak@gmail.com', '1949461561', '$2a$10$trT3.R/Nfey62eczbKEnueTcIbJXW.u1ffAo/XfyLpofwNDbEB86O');
 INSERT INTO Users (name, surname, username, pesel, password, enabled) VALUES ('Tomasz', 'Kowalski', 't.kowalski@gmail.com', '1549461561', '$2a$10$trT3.R/Nfey62eczbKEnueTcIbJXW.u1ffAo/XfyLpofwNDbEB86O', 1);
 INSERT INTO Users (name, surname, username, pesel, password) VALUES ('Robert','Kwiatkowski', 'r.k@gmail.com', '1149461561', '$2a$10$trT3.R/Nfey62eczbKEnueTcIbJXW.u1ffAo/XfyLpofwNDbEB86O');
+INSERT INTO Users (name, surname, username, pesel, password, enabled) VALUES ('Tomek','Wagner', 'tcawus@gmail.com', '1149461561', '$2a$10$trT3.R/Nfey62eczbKEnueTcIbJXW.u1ffAo/XfyLpofwNDbEB86O', 1);
 
 INSERT INTO user_roles (username, ROLE)
 VALUES ('example@example.com', 'ROLE_USER');

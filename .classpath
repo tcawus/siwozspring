@@ -62,6 +62,6 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/gdata-webmastertools-meta-2.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/gdata-youtube-2.0.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/gdata-youtube-meta-2.0.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_45"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_05"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
