@@ -1,5 +1,5 @@
-<%@taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <html>
@@ -9,37 +9,39 @@
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 </head>
 <body>
-<div class="container">
 
 	<jsp:include page="fragments/menu.jsp" />
 <div id = "page"> 
-	<h1>Title : ${title}</h1>
-	<h1>Message : ${message}</h1>
- 
-	<sec:authorize access="hasRole('ROLE_USER')">
-		<!-- For login user -->
-		<c:url value="/j_spring_security_logout" var="logoutUrl" />
-		<form action="${logoutUrl}" method="post" id="logoutForm">
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
-		</form>
-		
-		<script>
-			function formSubmit() {
-				document.getElementById("logoutForm").submit();
-			}
-		</script>
- 
-		<c:if test="${pageContext.request.userPrincipal.name != null}">
-			<h2>
-				User : ${pageContext.request.userPrincipal.name} | <a
-					href="javascript:formSubmit()"> Logout</a>
-			</h2>
-		</c:if>
 
-	</sec:authorize>
-</div>
-	<jsp:include page="fragments/footer.jsp" />
-</div>
+<div class="container">
+      <!-- Example row of columns -->
+      
+      <c:if test="${pageContext.request.userPrincipal.name == null}">
+      
+      <c:set var="contextPath"
+					value="${pageContext.request.contextPath}" />
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Logowanie</h2>
+          <p>Administrator oraz uzytkownik moze zalogowac sie do systemu.</p>
+          <p><a class="btn btn-default" href="${contextPath}/login" role="button">Logowanie &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Rejestracja</h2>
+          <p>Jesli pacjent nie ma jeszcze konta to moze zarejestrowac sie on tutaj. </p>
+          <p><a class="btn btn-default" href="${contextPath}/rejestracja" role="button">Rejestracja &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>Kalendarz</h2>
+          <p>Podglad kalendarza.</p>
+          <p><a class="btn btn-default" href="${contextPath}/calendar" role="button">Kalendarz &raquo;</a></p>
+        </div>
+      </div>
+	</c:if>
+      <hr>
+
+      <jsp:include page="fragments/footer.jsp" />
+    </div>
+	
 </body>
 </html>
