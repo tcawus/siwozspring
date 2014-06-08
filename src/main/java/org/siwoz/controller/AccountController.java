@@ -33,6 +33,7 @@ public class AccountController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String accountEditIndex(Model model, Principal principal)
 			throws IOException {
+		model.addAttribute("User");
 		System.out.println(principal.getName());
 		// currentUser = accountPropertiesService.getUserByEmail(user
 		// .getUsername());
