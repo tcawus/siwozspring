@@ -53,4 +53,11 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		messageSource.setBasename("messages");
 		return messageSource;
 	}
+//	
+//	@Bean(name = "calendarManager")
+//	public CalendarManager calendarManager() {
+//		CalendarManager calendarManager = new CalendarManager();
+//		calendarManager.connect();
+//		return calendarManager;
+//	}
 }
