@@ -8,7 +8,9 @@ import javax.validation.Valid;
 
 import org.siwoz.dao.model.Users;
 import org.siwoz.model.forms.account.AccountEditBean;
+import org.siwoz.model.forms.employee.PatientRecordFormBean;
 import org.siwoz.service.account.AccountPropertiesService;
+import org.siwoz.service.general.HistoricalVisitService;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +35,6 @@ public class AccountController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String accountEditIndex(Model model, Principal principal)
 			throws IOException {
-		model.addAttribute("User");
 		System.out.println(principal.getName());
 		// currentUser = accountPropertiesService.getUserByEmail(user
 		// .getUsername());
@@ -63,6 +64,28 @@ public class AccountController {
 		accountPropertiesService.updateProperties(currentUser, accountEditBean);
 		return new ModelAndView("register", "editResult",
 				accountPropertiesService.getUpdateResult());
+	}
+	
+
+	@Resource(name = "historicalVisitService")
+	HistoricalVisitService historicalVisitService;
+
+	@RequestMapping(value = "/active", method = RequestMethod.GET)
+	public String patientsChooser(Model model) throws IOException {
+		historicalVisitService.getAllPatientsForCompanyAndEmployee(1, 1);
+		model.addAttribute("name", historicalVisitService.getCachedListAsMap());
+		model.addAttribute("role", historicalVisitService.getCachedListAsMap());
+		model.addAttribute("patientRecord", new PatientRecordFormBean());
+		return "account/active";
+	}
+
+	@RequestMapping(value = "/active", method = RequestMethod.POST)
+	public String patientRecord(PatientRecordFormBean formBean, Model model)
+			throws IOException {
+		model.addAttribute("name", historicalVisitService.getCachedListAsMap());
+		model.addAttribute("role", historicalVisitService.getCachedListAsMap());
+		model.addAttribute("patientRecord", new PatientRecordFormBean());
+		return "account/active";
 	}
 
 	@RequestMapping(value = "/edit/delete", method = RequestMethod.POST)

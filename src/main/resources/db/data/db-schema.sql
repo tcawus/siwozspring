@@ -26,11 +26,9 @@ CREATE TABLE User_roles (
   user_role_id INT(11) NOT NULL AUTO_INCREMENT,
   username VARCHAR(45) NOT NULL,
   ROLE VARCHAR(45) NOT NULL,
-  user_id INT,
   PRIMARY KEY (user_role_id),
   UNIQUE KEY uni_username_role (ROLE,username),
-  KEY fk_username_idx (username),
-  CONSTRAINT fk_username FOREIGN KEY (user_id) REFERENCES users (id)
+  KEY fk_username_idx (username)
   ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE Address (
