@@ -1,5 +1,6 @@
 package org.siwoz.service.calendar;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -22,17 +23,16 @@ public class MyCalendarService {
 	@Resource(name = "visitRepository")
 	VisitRepository visitRepository;
 
-	public void putMyEvents(int userId) {
+	public void getMyEvents(long userId) {
 		calendarManager.clearEvents();
-		List<Visit> allVisits = visitRepository.getAll();
+		Collection<Visit> allVisits = visitRepository.getAll();
 		List<Visit> myVisits = new VisitForPatientFilter(userId)
 				.doFilter(allVisits);
 		for (Visit visit : myVisits) {
-			DateTime startTime = new DateTime(visit.getVisitDate());
+			DateTime startTime = new DateTime(visit.getVisitDate().getTime());
 			DateTime endTime = new DateTime(
 					visit.getVisitDate().getTime() + 1000 * 60 * 60);
-			calendarManager.insertEvent(visit.getIdDescription()
-					.getDescription(), visit.getIdDescription()
+			calendarManager.insertEvent("Wizyta", visit.getIdDescription()
 					.getDescription(), startTime, endTime);
 		}
 	}

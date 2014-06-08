@@ -21,12 +21,11 @@ public class AccountPropertiesService {
 
 	String updateResult;
 
-	public AccountEditBean getCurrentProperties(long userId) {
-		Users currentUser = usersRepository.getById(userId);
+	public AccountEditBean getCurrentProperties(String username) {
+		Users currentUser = usersRepository.getByEmail(username);
 		AccountEditBean accountEditBean = new AccountEditBean();
 		accountEditBean.setName(currentUser.getName());
 		accountEditBean.setSurname(currentUser.getSurname());
-		accountEditBean.setUsername(currentUser.getUsername());
 		if (currentUser.getPesel() != null)
 			accountEditBean.setPesel(currentUser.getPesel());
 		return accountEditBean;
@@ -40,7 +39,6 @@ public class AccountPropertiesService {
 		// TODO Auto-generated method stub
 		user.setName(accountEditBean.getName());
 		user.setSurname(accountEditBean.getSurname());
-		user.setUsername(accountEditBean.getUsername());
 		if (accountEditBean.getPesel() != null)
 			user.setPesel(accountEditBean.getPesel());
 		usersRepository.update(user);

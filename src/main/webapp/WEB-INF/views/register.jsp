@@ -20,7 +20,7 @@
 		<div id = "control-group" class=".control-group">
 			<form:label path="name" class=".control-label" />
 			<span id=".inputLabel">Imie:</span>
-			<form:input path="name" placeholder="Imie" />
+			<form:textarea path="name" placeholder="Imie" />
 			<form:errors path="name" cssClass="errors" />
 			<br />
 			<form:label path="surname" class=".control-label" />

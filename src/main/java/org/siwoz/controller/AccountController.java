@@ -10,8 +10,12 @@ import org.siwoz.dao.model.Users;
 import org.siwoz.dao.repos.User_rolesRepository;
 import org.siwoz.model.forms.account.AccountEditBean;
 import org.siwoz.service.account.AccountPropertiesService;
+<<<<<<< HEAD
 import org.siwoz.service.account.ActiveFormBean;
 import org.siwoz.service.general.User_rolesService;
+=======
+import org.siwoz.service.general.HistoricalVisitService;
+>>>>>>> 74ed6a108b807a73e8588c172de7f08a4c7c609c
 import org.siwoz.service.general.UsersService;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -37,22 +41,18 @@ public class AccountController {
 	@Resource(name = "user_rolesService")
 	User_rolesService user_rolesService;
 
+	@Resource(name = "usersService")
+	UsersService usersService;
+
 	private AccountEditBean cachedAccountBean;
 	private Users currentUser;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String accountEditIndex(Model model, Principal principal)
-			throws IOException {
-		System.out.println(principal.getName());
-		// currentUser = accountPropertiesService.getUserByEmail(user
-		// .getUsername());
-		return "account/edit";
-	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public String editAccount(Model model) throws IOException {
+	public String editAccount(Model model, Principal principal)
+			throws IOException {
+		currentUser = usersService.getByEmail(principal.getName());
 		cachedAccountBean = accountPropertiesService
-				.getCurrentProperties(currentUser.getId());
+				.getCurrentProperties(principal.getName());
 		model.addAttribute("accountBean", cachedAccountBean);
 		return "account/edit";
 	}
@@ -73,6 +73,12 @@ public class AccountController {
 		return new ModelAndView("register", "editResult",
 				accountPropertiesService.getUpdateResult());
 	}
+<<<<<<< HEAD
+=======
+
+	@Resource(name = "historicalVisitService")
+	HistoricalVisitService historicalVisitService;
+>>>>>>> 74ed6a108b807a73e8588c172de7f08a4c7c609c
 
 	@RequestMapping(value = "/active", method = RequestMethod.GET)
 	public String usersChooser(Model model) throws IOException {

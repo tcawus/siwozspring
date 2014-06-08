@@ -1,6 +1,9 @@
 package org.siwoz.service.general;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -41,4 +44,15 @@ public class PatientService implements IService<Patient> {
 		patientRepository.delete(object);
 	}
 
+	public Map<String, String> getAllAsMap() {
+		List<Patient> allPatients = patientRepository.getAll();
+		Map<String, String> patientMap = new HashMap<String, String>();
+		for (Patient patient : allPatients) {
+			patientMap.put(String.valueOf(patient.getIdUser().getId()), patient
+					.getIdUser().getName()
+					+ " "
+					+ patient.getIdUser().getSurname());
+		}
+		return patientMap;
+	}
 }

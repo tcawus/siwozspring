@@ -40,4 +40,8 @@ public class UsersService implements IService<Users> {
 	public void delete(Users object) {
 		usersRepository.delete(object);
 	}
+
+	public Users getByEmail(String name) {
+		return usersRepository.getByEmail(name);
+	}
 }
