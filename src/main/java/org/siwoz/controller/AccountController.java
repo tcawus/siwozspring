@@ -1,14 +1,14 @@
 package org.siwoz.controller;
 
-
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.siwoz.dao.model.Users;
-import org.siwoz.dao.repos.User_rolesRepository;
 import org.siwoz.model.forms.account.AccountEditBean;
 import org.siwoz.service.account.AccountPropertiesService;
 import org.siwoz.service.account.ActiveFormBean;
@@ -31,10 +31,10 @@ public class AccountController {
 
 	@Resource(name = "messageSource")
 	MessageSource messageSource;
-	
+
 	@Resource(name = "usersService")
 	UsersService usersService;
-	
+
 	@Resource(name = "user_rolesService")
 	User_rolesService user_rolesService;
 
@@ -70,8 +70,10 @@ public class AccountController {
 
 	@RequestMapping(value = "/active", method = RequestMethod.GET)
 	public String usersChooser(Model model) throws IOException {
-		model.addAttribute("name", usersService.getAll());
-		model.addAttribute("role", user_rolesService.getAll());
+		model.addAttribute("name", usersService.getCachedListAsMap());
+		List<String> roleList = Arrays.asList("ROLE_USER", "ROLE_ADMIN");
+		// model.addAttribute("role", user_rolesService.getAll());
+		model.addAttribute("role", roleList);
 		model.addAttribute("activeRecord", new ActiveFormBean());
 		return "account/active";
 	}
@@ -79,8 +81,10 @@ public class AccountController {
 	@RequestMapping(value = "/active", method = RequestMethod.POST)
 	public String activeAccount(ActiveFormBean formBean, Model model)
 			throws IOException {
-		model.addAttribute("name", usersService.getAll());
-		model.addAttribute("role", user_rolesService.getAll());
+		model.addAttribute("name", usersService.getCachedListAsMap());
+		List<String> roleList = Arrays.asList("ROLE_USER", "ROLE_ADMIN");
+		// model.addAttribute("role", user_rolesService.getAll());
+		model.addAttribute("role", roleList);
 		model.addAttribute("activeRecord", new ActiveFormBean());
 		return "account/active";
 	}

@@ -19,6 +19,11 @@ public class UsersRepository extends AbstractRepository<Users> {
 		return Lists.newArrayList(Iterables.filter(query.list(), Users.class));
 	}
 
+	public Collection<Users> getAllDisabled() {
+		Query query = getSession().createQuery("from Users where enabled=false");
+		return Lists.newArrayList(Iterables.filter(query.list(), Users.class));
+	}
+
 	@Override
 	public Users getById(long id) {
 		return (Users) getSession().get(Users.class, id);

@@ -18,12 +18,12 @@
 <jsp:include page="../fragments/menu.jsp" />
 <div id = "page">
 	<div id="form">
-		<form:form method="post" modelAttribute="patientRecord">
-			<form:label path="name" />
+		<form:form method="post" modelAttribute="patientRecord" class="control-group">
+			<form:label path="name" class=".control-label"/>
 			<span id=".inputLabel">Wybierz pacjenta:</span>
 			<form:select path="name" items="${name}" />
 			<form:errors path="name" cssClass="errors" />
-			<input type="submit" value="Wybierz" />
+			<input type="submit" value="Wybierz" class="btn btn-mini btn-primary" />
 		</form:form>
 	</div>
 	<c:if test="${records != null}">

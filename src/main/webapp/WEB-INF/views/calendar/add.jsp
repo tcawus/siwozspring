@@ -13,12 +13,12 @@
 		<br />
 		<br />
 		<br />
-		<form:form method="post" modelAttribute="newVisitBean"
-			class=".form-horizontal">
-			<form:label path="patients" class=".control-label" />
+		<form:form method="post" modelAttribute="newVisitBean" class=".form-horizontal">
+		<div id = "control-group" class=".control-group">
+			<form:label path="patients" class=".control-label"  />
 			<span id=".inputLabel">Pacjent:</span>
 			<form:select path="patients" items="${patients}" />
-			<form:label path="title" class=".control-label" />
+			<form:label path="title" class=".control-label"/>
 			<br />
 			<span id=".inputLabel">Cel wizyty:</span>
 			<form:input path="title" placeholder="Cel Wizyty" />
@@ -35,7 +35,8 @@
 			<form:input path="from" placeholder="Data" />
 			<form:errors path="from" cssClass="errors" />
 			<br />
-			<input type="submit" value="Dodaj" />
+		</div>
+			<input type="submit" value="Dodaj" class="btn btn-primary" />
 		</form:form>
 		${result}
 	</div>
