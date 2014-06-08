@@ -18,7 +18,7 @@
 <jsp:include page="../fragments/menu.jsp" />
 <div id = "page">
 	<div id="form">
-		<form:form method="post" modelAttribute="patientRecord">
+		<form:form method="post" modelAttribute="activeRecord">
 			<form:label path="name" />
 			<span id=".inputLabel">Wybierz uzytkownika i role:</span>
 			<form:select path="name" items="${name}" />

@@ -7,10 +7,12 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 import org.siwoz.dao.model.Users;
+import org.siwoz.dao.repos.User_rolesRepository;
 import org.siwoz.model.forms.account.AccountEditBean;
-import org.siwoz.model.forms.employee.PatientRecordFormBean;
 import org.siwoz.service.account.AccountPropertiesService;
-import org.siwoz.service.general.HistoricalVisitService;
+import org.siwoz.service.account.ActiveFormBean;
+import org.siwoz.service.general.User_rolesService;
+import org.siwoz.service.general.UsersService;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,12 @@ public class AccountController {
 
 	@Resource(name = "messageSource")
 	MessageSource messageSource;
+	
+	@Resource(name = "usersService")
+	UsersService usersService;
+	
+	@Resource(name = "user_rolesService")
+	User_rolesService user_rolesService;
 
 	private AccountEditBean cachedAccountBean;
 	private Users currentUser;
@@ -65,26 +73,21 @@ public class AccountController {
 		return new ModelAndView("register", "editResult",
 				accountPropertiesService.getUpdateResult());
 	}
-	
-
-	@Resource(name = "historicalVisitService")
-	HistoricalVisitService historicalVisitService;
 
 	@RequestMapping(value = "/active", method = RequestMethod.GET)
-	public String patientsChooser(Model model) throws IOException {
-		historicalVisitService.getAllPatientsForCompanyAndEmployee(1, 1);
-		model.addAttribute("name", historicalVisitService.getCachedListAsMap());
-		model.addAttribute("role", historicalVisitService.getCachedListAsMap());
-		model.addAttribute("patientRecord", new PatientRecordFormBean());
+	public String usersChooser(Model model) throws IOException {
+		model.addAttribute("name", usersService.getAll());
+		model.addAttribute("role", user_rolesService.getAll());
+		model.addAttribute("activeRecord", new ActiveFormBean());
 		return "account/active";
 	}
 
 	@RequestMapping(value = "/active", method = RequestMethod.POST)
-	public String patientRecord(PatientRecordFormBean formBean, Model model)
+	public String activeAccount(ActiveFormBean formBean, Model model)
 			throws IOException {
-		model.addAttribute("name", historicalVisitService.getCachedListAsMap());
-		model.addAttribute("role", historicalVisitService.getCachedListAsMap());
-		model.addAttribute("patientRecord", new PatientRecordFormBean());
+		model.addAttribute("name", usersService.getAll());
+		model.addAttribute("role", user_rolesService.getAll());
+		model.addAttribute("activeRecord", new ActiveFormBean());
 		return "account/active";
 	}
 
