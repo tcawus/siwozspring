@@ -1,5 +1,6 @@
 package org.siwoz.config;
 
+import org.siwoz.service.calendar.CalendarManager;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -53,7 +54,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		messageSource.setBasename("messages");
 		return messageSource;
 	}
-//	
+
 //	@Bean(name = "calendarManager")
 //	public CalendarManager calendarManager() {
 //		CalendarManager calendarManager = new CalendarManager();

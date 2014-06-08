@@ -1,6 +1,6 @@
 package org.siwoz.dao.repos;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.siwoz.dao.model.Visit;
@@ -13,7 +13,7 @@ import com.google.common.collect.Lists;
 public class VisitRepository extends AbstractRepository<Visit> {
 
 	@Override
-	public Collection<Visit> getAll() {
+	public List<Visit> getAll() {
 		Query query = getSession().createQuery("from Visit");
 		return Lists.newArrayList(Iterables.filter(query.list(), Visit.class));
 	}
@@ -22,5 +22,4 @@ public class VisitRepository extends AbstractRepository<Visit> {
 	public Visit getById(long id) {
 		return (Visit) getSession().get(Visit.class, id);
 	}
-
 }

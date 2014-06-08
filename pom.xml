@@ -156,18 +156,10 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>r09</version>
-		</dependency>
-		<!-- <dependency> <groupId>com.google.gdata</groupId> <artifactId>core</artifactId> 
-			<version>1.47.1</version> </dependency> -->
-			
+		</dependency>			
 	</dependencies>
 
 	<repositories>
-		<repository>
-			<id>gdata-maven-github</id>
-			<name>Google Gdata Maven Repository</name>
-			<url>https://raw.github.com/eburtsev/gdata-maven/master/</url>
-		</repository>
 		<repository>
 			<id>springsource-milestones</id>
 			<name>SpringSource Milestones Proxy</name>

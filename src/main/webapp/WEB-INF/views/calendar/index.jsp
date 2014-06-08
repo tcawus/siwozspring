@@ -9,7 +9,10 @@
 	href="<%=request.getContextPath()%>/resources/css/style.css" />
 </head>
 <body>
-<jsp:include page="../fragments/menu.jsp" />
-
+	<jsp:include page="../fragments/menu.jsp" />
+	<form:form method="post" action="redirect" class=".form-horizontal">
+		<input type="submit" value="Przenies mnie do mojego kalendarza"
+			class="btn btn-primary" />
+	</form:form>
 </body>
 </html>

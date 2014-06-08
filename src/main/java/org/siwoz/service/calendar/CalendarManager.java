@@ -1,25 +1,10 @@
-//package org.siwoz.service.calendar;
-//
-//import java.io.IOException;
-//import java.net.MalformedURLException;
-//import java.net.URL;
-//
-//import com.google.gdata.client.calendar.CalendarService;
-//import com.google.gdata.data.DateTime;
-//import com.google.gdata.data.PlainTextConstruct;
-//import com.google.gdata.data.calendar.CalendarEntry;
-//import com.google.gdata.data.calendar.CalendarEventEntry;
-//import com.google.gdata.data.calendar.CalendarFeed;
-//import com.google.gdata.data.extensions.When;
-//import com.google.gdata.util.AuthenticationException;
-//import com.google.gdata.util.InvalidEntryException;
-//import com.google.gdata.util.ServiceException;
-//
-//public class CalendarManager {
-//
+package org.siwoz.service.calendar;
+
+
+public class CalendarManager {
+
 //	final String LOGIN = "siwoz2014@gmail.com", PASSWORD = "siwoz20142014";
 //	URL postUrl;
-//
 //	CalendarService calendarService;
 //
 //	public void connect() {
@@ -76,4 +61,4 @@
 //			e1.printStackTrace();
 //		}
 //	}
-//}
+}
