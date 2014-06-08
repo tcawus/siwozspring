@@ -11,10 +11,12 @@ import org.siwoz.dao.model.Patient2Company;
 import org.siwoz.dao.model.Visit;
 import org.siwoz.dao.model.VisitDescription;
 import org.siwoz.dao.repos.Patient2CompanyRepository;
+import org.siwoz.dao.repos.UsersRepository;
 import org.siwoz.dao.repos.VisitDescriptionRepository;
 import org.siwoz.dao.repos.VisitRepository;
 import org.siwoz.filter.MyPatient2CompanyFilter;
 import org.siwoz.model.forms.calendar.NewVisitBean;
+import org.siwoz.service.MailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,6 +32,12 @@ public class VisitService implements IService<Visit> {
 
 	@Resource(name = "patient2CompanyRepository")
 	Patient2CompanyRepository patient2CompanyRepository;
+
+	@Resource(name = "usersRepository")
+	UsersRepository usersRepository;
+
+	@Resource(name = "mailSender")
+	MailSender mailSender;
 
 	@Override
 	public Collection<Visit> getAll() {
@@ -78,5 +86,12 @@ public class VisitService implements IService<Visit> {
 			e.printStackTrace();
 		}
 		visitRepository.add(visit);
+		sendNotification(visit, idUser);
+	}
+
+	private void sendNotification(Visit visit, int idUser) {
+		String email = usersRepository.getById(idUser).getUsername();
+		mailSender.send(email, "Wizyta " + visit.getVisitDate(), visit
+				.getIdDescription().getDescription());
 	}
 }
