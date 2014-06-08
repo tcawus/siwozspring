@@ -9,9 +9,9 @@ import com.google.common.collect.Lists;
 
 public class VisitForPatientFilter implements IFilter<Visit> {
 
-	int userId;
+	long userId;
 
-	public VisitForPatientFilter(int userId) {
+	public VisitForPatientFilter(long userId) {
 		this.userId = userId;
 	}
 

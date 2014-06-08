@@ -11,6 +11,7 @@ import org.siwoz.model.forms.account.AccountEditBean;
 import org.siwoz.model.forms.employee.PatientRecordFormBean;
 import org.siwoz.service.account.AccountPropertiesService;
 import org.siwoz.service.general.HistoricalVisitService;
+import org.siwoz.service.general.UsersService;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,22 +30,18 @@ public class AccountController {
 	@Resource(name = "messageSource")
 	MessageSource messageSource;
 
+	@Resource(name = "usersService")
+	UsersService usersService;
+
 	private AccountEditBean cachedAccountBean;
 	private Users currentUser;
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String accountEditIndex(Model model, Principal principal)
-			throws IOException {
-		System.out.println(principal.getName());
-		// currentUser = accountPropertiesService.getUserByEmail(user
-		// .getUsername());
-		return "account/edit";
-	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public String editAccount(Model model) throws IOException {
+	public String editAccount(Model model, Principal principal)
+			throws IOException {
+		currentUser = usersService.getByEmail(principal.getName());
 		cachedAccountBean = accountPropertiesService
-				.getCurrentProperties(currentUser.getId());
+				.getCurrentProperties(principal.getName());
 		model.addAttribute("accountBean", cachedAccountBean);
 		return "account/edit";
 	}
@@ -65,7 +62,6 @@ public class AccountController {
 		return new ModelAndView("register", "editResult",
 				accountPropertiesService.getUpdateResult());
 	}
-	
 
 	@Resource(name = "historicalVisitService")
 	HistoricalVisitService historicalVisitService;

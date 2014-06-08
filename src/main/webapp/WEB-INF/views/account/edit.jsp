@@ -28,14 +28,9 @@
 			<form:input path="surname" placeholder="Nazwisko"/>
 			<form:errors path="surname" cssClass="errors" />
 			<br />
-			<form:label path="username" class=".control-label" />
-			<span id=".inputLabel">Email:</span>
-			<form:input path="username" placeholder="Email" />
-			<form:errors path="username" cssClass="errors" />
-			<br />
 			<form:label path="pesel" class=".control-label" />
 			<span id=".inputLabel">Pesel(opcjonalnie):</span>
-			<form:input path="pesel" placeholder="Pasel"/>
+			<form:input path="pesel" placeholder="Pesel"/>
 			<form:errors path="pesel" cssClass="errors" />
 			<br />
 			<form:label path="password" class=".control-label" />
@@ -47,11 +42,6 @@
 			<span id=".inputLabel">Powtorz haslo:</span>
 			<form:password path="passwordVerify" placeholder="Haslo" />
 			<form:errors path="passwordVerify" cssClass="errors" />
-			<br />
-			<form:label path="userType" class=".control-label" />
-			<span id=".inputLabel">Rodzaj wspolpracy:</span>
-			<form:select path="userType" items="${userType}" />
-			<form:errors path="userType" cssClass="errors" />
 			<br />
 		</div>
 		<div class="controls">

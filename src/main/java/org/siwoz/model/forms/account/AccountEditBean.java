@@ -2,7 +2,6 @@ package org.siwoz.model.forms.account;
 
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.ScriptAssert;
@@ -12,11 +11,6 @@ public class AccountEditBean {
 	@NotBlank
 	@Length(min = 2, max = 20)
 	private String name, surname;
-
-	@NotBlank
-	@Length(max = 40)
-	@Email
-	private String username;
 
 	private String pesel;
 
@@ -38,14 +32,6 @@ public class AccountEditBean {
 
 	public void setPesel(String pesel) {
 		this.pesel = pesel;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getSurname() {

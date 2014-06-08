@@ -1,6 +1,7 @@
 package org.siwoz.controller;
 
 import java.io.IOException;
+import java.security.Principal;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -8,6 +9,7 @@ import javax.validation.Valid;
 import org.siwoz.model.forms.calendar.NewVisitBean;
 import org.siwoz.service.calendar.MyCalendarService;
 import org.siwoz.service.general.PatientService;
+import org.siwoz.service.general.UsersService;
 import org.siwoz.service.general.VisitService;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -33,9 +35,14 @@ public class CalendarController {
 	@Resource(name = "messageSource")
 	MessageSource messageSource;
 
+	@Resource(name = "usersService")
+	UsersService usersService;
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView myCalendarIndex(Model model) throws IOException {
-		calendarService.getMyEvents(3);
+	public ModelAndView myCalendarIndex(Model model, Principal principal)
+			throws IOException {
+		calendarService.getMyEvents(usersService
+				.getByEmail(principal.getName()).getId());
 		return new ModelAndView(
 				"redirect:https://www.google.com/calendar/embed?src=siwoz2014%40gmail.com&ctz=Europe/Warsaw");
 	}
