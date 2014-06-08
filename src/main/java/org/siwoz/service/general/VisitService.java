@@ -1,11 +1,20 @@
 package org.siwoz.service.general;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.siwoz.dao.model.Patient2Company;
 import org.siwoz.dao.model.Visit;
+import org.siwoz.dao.model.VisitDescription;
+import org.siwoz.dao.repos.Patient2CompanyRepository;
+import org.siwoz.dao.repos.VisitDescriptionRepository;
 import org.siwoz.dao.repos.VisitRepository;
+import org.siwoz.filter.MyPatient2CompanyFilter;
+import org.siwoz.model.forms.calendar.NewVisitBean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +24,12 @@ public class VisitService implements IService<Visit> {
 
 	@Resource(name = "visitRepository")
 	VisitRepository visitRepository;
+
+	@Resource(name = "visitDescriptionRepository")
+	VisitDescriptionRepository visitDescriptionRepository;
+
+	@Resource(name = "patient2CompanyRepository")
+	Patient2CompanyRepository patient2CompanyRepository;
 
 	@Override
 	public Collection<Visit> getAll() {
@@ -39,5 +54,29 @@ public class VisitService implements IService<Visit> {
 	@Override
 	public void delete(Visit object) {
 		visitRepository.delete(object);
+	}
+
+	public void add(NewVisitBean newVisitBean, int idUser) {
+		VisitDescription visitDescription = new VisitDescription();
+		visitDescription.setDescription(newVisitBean.getDescription());
+		visitDescription = visitDescriptionRepository.add(visitDescription);
+
+		List<Patient2Company> patient2Companies = patient2CompanyRepository
+				.getAll();
+		Patient2Company patient2Company = new MyPatient2CompanyFilter(idUser)
+				.doFilter(patient2Companies).get(0);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+		Visit visit = new Visit();
+		visit.setIdDescription(visitDescription);
+		visit.setIdEmployee(null);
+		visit.setIdPatient2Company(patient2Company);
+		try {
+			visit.setVisitDate(formatter.parse(newVisitBean.getFrom()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		visitRepository.add(visit);
 	}
 }
