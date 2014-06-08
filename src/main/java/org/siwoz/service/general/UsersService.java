@@ -53,11 +53,15 @@ public class UsersService implements IService<Users> {
 		return usersRepository.getByEmail(name);
 	}
 
+	public Users getByUsername(String username) {
+		return usersRepository.getByUsername(username);
+	}
+
 	public Map<Long, String> getCachedListAsMap() {
 		usersList = this.getAllDisabled();
 		Map<Long, String> usersMap = new LinkedHashMap<Long, String>();
 		for (Users user : usersList) {
-			usersMap.put(user.getId(), user.getName() + " " + user.getSurname());
+			usersMap.put(user.getId(), user.getUsername());
 		}
 		return usersMap;
 	}

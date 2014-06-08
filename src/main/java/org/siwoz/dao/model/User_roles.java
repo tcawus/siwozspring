@@ -46,5 +46,9 @@ public class User_roles implements Serializable {
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	public String toString() {
+		return this.role + " " + this.username;
+	}
 
 }

@@ -8,6 +8,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.siwoz.dao.model.User_roles;
 import org.siwoz.dao.model.Users;
 import org.siwoz.model.forms.account.AccountEditBean;
 import org.siwoz.service.account.AccountPropertiesService;
@@ -81,6 +82,14 @@ public class AccountController {
 	@RequestMapping(value = "/active", method = RequestMethod.POST)
 	public String activeAccount(ActiveFormBean formBean, Model model)
 			throws IOException {
+		long id = (long) Long.parseLong(formBean.getName());
+		Users user = usersService.getById(id);
+		user.setEnabled(true);
+		User_roles user_roles = new User_roles();
+		user_roles.setUsername(user.getUsername());
+		user_roles.setRole(formBean.getRole());
+		System.out.println(user_roles.toString());
+		user_rolesService.add(user_roles);
 		model.addAttribute("name", usersService.getCachedListAsMap());
 		List<String> roleList = Arrays.asList("ROLE_USER", "ROLE_ADMIN");
 		// model.addAttribute("role", user_rolesService.getAll());

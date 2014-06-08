@@ -32,7 +32,7 @@ public class User_rolesService implements IService<User_roles> {
 	@Override
 	public User_roles add(User_roles object) {
 		// TODO Auto-generated method stub
-		return null;
+		return user_rolesRepository.add(object);
 	}
 
 	@Override
