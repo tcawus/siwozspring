@@ -156,7 +156,12 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>r09</version>
-		</dependency>			
+		</dependency>
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-calendar</artifactId>
+			<version>v3-rev84-1.18.0-rc</version>
+		</dependency>
 	</dependencies>
 
 	<repositories>
