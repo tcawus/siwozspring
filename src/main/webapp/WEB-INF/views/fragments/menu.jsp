@@ -42,6 +42,10 @@
 								pacjenta </a></li>
 						<li><c:set var="contextPath"
 								value="${pageContext.request.contextPath}" /> <a
+							href="${contextPath}/calendar/" target="_blank"
+							class="navbar-brand">Moj kalendarz</a></li>
+						<li><c:set var="contextPath"
+								value="${pageContext.request.contextPath}" /> <a
 							href="${contextPath}/exportcsv/" class="navbar-brand">Eksport
 								kalendarza do CSV</a></li>
 					</security:authorize>
