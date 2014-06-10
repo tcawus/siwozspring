@@ -1,6 +1,6 @@
 package org.siwoz.dao.repos;
 
-import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.siwoz.dao.model.User_roles;
@@ -14,7 +14,7 @@ public class User_rolesRepository extends
 		AbstractRepository<User_roles> {
 
 	@Override
-	public Collection<User_roles> getAll() {
+	public List<User_roles> getAll() {
 		Query query = getSession().createQuery("from User_roles");
 		return Lists.newArrayList(Iterables.filter(query.list(),
 				User_roles.class));

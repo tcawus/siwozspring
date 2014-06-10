@@ -15,8 +15,6 @@ import org.siwoz.dao.repos.UsersRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.google.common.collect.Lists;
-
 @Service("user_rolesService")
 @Transactional
 public class User_rolesService {
@@ -35,7 +33,7 @@ public class User_rolesService {
 
 	public void activate(Users user, User_roles object) {
 		// TODO Auto-generated method stub
-		List<User_roles> user_roles = Lists.newArrayList();
+		List<User_roles> user_roles = user_rolesRepository.getAll();
 		boolean isFound = false;
 		for (User_roles user_role : user_roles) {
 			if (user.getUsername().equals(user_role.getUsername())) {
@@ -52,6 +50,6 @@ public class User_rolesService {
 			patient2CompanyRepository.add(patient2Company);
 			user_rolesRepository.add(object);
 		}
-		//usersRepository.update(user);
+		usersRepository.update(user);
 	}
 }
