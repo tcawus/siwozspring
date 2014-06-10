@@ -1,6 +1,5 @@
 package org.siwoz.dao.repos;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -15,7 +14,7 @@ public class HistoricalVisitRepository extends
 		AbstractRepository<HistoricalVisit> {
 
 	@Override
-	public Collection<HistoricalVisit> getAll() {
+	public List<HistoricalVisit> getAll() {
 		Query query = getSession().createQuery("from HistoricalVisit");
 		return Lists.newArrayList(Iterables.filter(query.list(),
 				HistoricalVisit.class));

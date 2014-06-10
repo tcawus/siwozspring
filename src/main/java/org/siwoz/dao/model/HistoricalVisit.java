@@ -2,6 +2,7 @@ package org.siwoz.dao.model;
 
 import java.sql.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -17,28 +18,28 @@ public class HistoricalVisit {
 
 	@Id
 	@GeneratedValue
-	private Integer id;
+	private long id;
 
 	@Column
 	Date visitDate;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Patient2Company.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Patient2Company.class, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "idPatient2Company", updatable = true, insertable = true)
 	private Patient2Company idPatient2Company;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = VisitDescription.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = VisitDescription.class, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "idDescription", updatable = true, insertable = true)
 	private VisitDescription idDescription;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Employee.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Employee.class, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "idEmployee", updatable = true, insertable = true)
 	private Employee idEmployee;
 
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

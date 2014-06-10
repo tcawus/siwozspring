@@ -35,7 +35,7 @@
 			<br />
 			<form:label path="pesel" class=".control-label" />
 			<span id=".inputLabel">Pesel(opcjonalnie):</span>
-			<form:input path="pesel" placeholder="Pasel"/>
+			<form:input path="pesel" placeholder="Pesel"/>
 			<form:errors path="pesel" cssClass="errors" />
 			<br />
 			<form:label path="password" class=".control-label" />

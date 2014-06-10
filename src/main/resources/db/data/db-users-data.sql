@@ -5,6 +5,8 @@ INSERT INTO Users (name, surname, username, pesel, password) VALUES ('Robert','K
 INSERT INTO Users (name, surname, username, pesel, password, enabled) VALUES ('Tomek','Wagner', 'tcawus@gmail.com', '1149461561', '$2a$10$trT3.R/Nfey62eczbKEnueTcIbJXW.u1ffAo/XfyLpofwNDbEB86O', 1);
 
 INSERT INTO user_roles (username, ROLE)
+VALUES ('tcawus@gmail.com', 'ROLE_USER');
+INSERT INTO user_roles (username, ROLE)
 VALUES ('example@example.com', 'ROLE_USER');
 INSERT INTO user_roles (username, ROLE)
 VALUES ('t.kowalski@gmail.com', 'ROLE_ADMIN');

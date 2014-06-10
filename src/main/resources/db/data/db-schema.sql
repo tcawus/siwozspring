@@ -58,8 +58,12 @@ CREATE TABLE Company (
 	description varchar(512),
 	idAddress INT,
 	founder INT,
-	FOREIGN KEY(idAddress) REFERENCES Address(id),
-	FOREIGN KEY(founder) REFERENCES Users(id),
+	FOREIGN KEY(idAddress) REFERENCES Address(id)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
+	FOREIGN KEY(founder) REFERENCES Users(id)  
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
 	PRIMARY KEY(id)
 )  DEFAULT CHARSET=utf8;
 
@@ -68,9 +72,15 @@ CREATE TABLE Employee (
 	idEmployeeStatus INT,
 	idUser INT,
 	idCompany INT,
-	FOREIGN KEY(idEmployeeStatus) REFERENCES EmployeeStatus(id),
-	FOREIGN KEY(idUser) REFERENCES Users(id),
-	FOREIGN KEY(idCompany) REFERENCES Company(id),
+	FOREIGN KEY(idEmployeeStatus) REFERENCES EmployeeStatus(id)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
+	FOREIGN KEY(idUser) REFERENCES Users(id)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
+	FOREIGN KEY(idCompany) REFERENCES Company(id)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
 	PRIMARY KEY(id)
 )  DEFAULT CHARSET=utf8;
 
@@ -79,8 +89,12 @@ CREATE TABLE Patient2Company (
 	id INT AUTO_INCREMENT,
 	idPatient INT,
 	idCompany INT,
-	FOREIGN KEY(idPatient) REFERENCES Patient(id),
-	FOREIGN KEY(idCompany) REFERENCES Company(id),
+	FOREIGN KEY(idPatient) REFERENCES Patient(id)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
+	FOREIGN KEY(idCompany) REFERENCES Company(id)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
 	PRIMARY KEY(id)
 )  DEFAULT CHARSET=utf8;
 
@@ -96,9 +110,15 @@ CREATE TABLE Visit (
 	idPatient2Company INT,
 	idEmployee INT,
 	idDescription INT,
-	FOREIGN KEY(idPatient2Company) REFERENCES Patient2Company(id),
-	FOREIGN KEY(idEmployee) REFERENCES Employee(id),
-	FOREIGN KEY(idDescription) REFERENCES VisitDescription(id),
+	FOREIGN KEY(idPatient2Company) REFERENCES Patient2Company(id)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
+	FOREIGN KEY(idEmployee) REFERENCES Employee(id)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
+	FOREIGN KEY(idDescription) REFERENCES VisitDescription(id)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
 	PRIMARY KEY(id)
 )  DEFAULT CHARSET=utf8;
 
@@ -108,8 +128,14 @@ CREATE TABLE HistoricalVisit (
 	idPatient2Company INT,
 	idEmployee INT,
 	idDescription INT,
-	FOREIGN KEY(idPatient2Company) REFERENCES Patient2Company(id),
-	FOREIGN KEY(idEmployee) REFERENCES Employee(id),
-	FOREIGN KEY(idDescription) REFERENCES VisitDescription(id),
+	FOREIGN KEY(idPatient2Company) REFERENCES Patient2Company(id)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
+	FOREIGN KEY(idEmployee) REFERENCES Employee(id)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
+	FOREIGN KEY(idDescription) REFERENCES VisitDescription(id)
+	ON DELETE CASCADE
+    ON UPDATE CASCADE,
 	PRIMARY KEY(id)
 )  DEFAULT CHARSET=utf8;

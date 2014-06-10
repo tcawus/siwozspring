@@ -16,6 +16,7 @@ import org.siwoz.service.account.ActiveFormBean;
 import org.siwoz.service.general.User_rolesService;
 import org.siwoz.service.general.UsersService;
 import org.springframework.context.MessageSource;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -65,8 +66,10 @@ public class AccountController {
 			return mav;
 		}
 		accountPropertiesService.updateProperties(currentUser, accountEditBean);
-		return new ModelAndView("register", "editResult",
+		ModelAndView mav = new ModelAndView("account/edit", "editResult",
 				accountPropertiesService.getUpdateResult());
+		mav.addObject("accountBean", accountEditBean);
+		return mav;
 	}
 
 	@RequestMapping(value = "/active", method = RequestMethod.GET)
@@ -88,8 +91,7 @@ public class AccountController {
 		User_roles user_roles = new User_roles();
 		user_roles.setUsername(user.getUsername());
 		user_roles.setRole(formBean.getRole());
-		System.out.println(user_roles.toString());
-		user_rolesService.add(user_roles);
+		user_rolesService.activate(user, user_roles);
 		model.addAttribute("name", usersService.getCachedListAsMap());
 		List<String> roleList = Arrays.asList("ROLE_USER", "ROLE_ADMIN");
 		// model.addAttribute("role", user_rolesService.getAll());
@@ -101,6 +103,7 @@ public class AccountController {
 	@RequestMapping(value = "/edit/delete", method = RequestMethod.POST)
 	public String deleteAccount(Model model) throws IOException {
 		accountPropertiesService.deleteAccount(currentUser);
+		SecurityContextHolder.clearContext();
 		return "index";
 	}
 }

@@ -1,10 +1,8 @@
 package org.siwoz.dao.repos;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.hibernate.Query;
-import org.siwoz.dao.model.HistoricalVisit;
 import org.siwoz.dao.model.User_roles;
 import org.springframework.stereotype.Repository;
 

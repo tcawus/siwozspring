@@ -2,10 +2,12 @@ package org.siwoz.controller;
 
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.siwoz.model.forms.calendar.DeleteVisitBean;
 import org.siwoz.model.forms.calendar.NewVisitBean;
 import org.siwoz.service.calendar.MyCalendarService;
 import org.siwoz.service.general.PatientService;
@@ -38,6 +40,8 @@ public class CalendarController {
 	@Resource(name = "usersService")
 	UsersService usersService;
 
+	Map<String, String> cachedVisitsMap;
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView myCalendarIndex(Model model, Principal principal)
 			throws IOException {
@@ -49,7 +53,7 @@ public class CalendarController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addNewVisit(Model model) throws IOException {
-		model.addAttribute("patients", patientService.getAllAsMap());
+		model.addAttribute("patients", patientService.getAllSubscribedMap());
 		model.addAttribute("newVisitBean", new NewVisitBean());
 		return "calendar/add";
 	}
@@ -59,7 +63,7 @@ public class CalendarController {
 			BindingResult bindingResult) throws IOException {
 		if (bindingResult.hasErrors()) {
 			ModelAndView mav = new ModelAndView();
-			mav.addObject("patients", patientService.getAllAsMap());
+			mav.addObject("patients", patientService.getAllSubscribedMap());
 			mav.addObject("newVisitBean", newVisitBean);
 			return mav;
 		}
@@ -67,6 +71,27 @@ public class CalendarController {
 		ModelAndView mav = new ModelAndView("calendar/add", "result",
 				messageSource.getMessage("visitAdded", null, null));
 		mav.addObject("newVisitBean", new NewVisitBean());
+		return mav;
+	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String deleteVisitForm(Model model) throws IOException {
+		model.addAttribute("deleteVisitBean", new DeleteVisitBean());
+		cachedVisitsMap = visitService.getAllAsMap();
+		model.addAttribute("visits", cachedVisitsMap);
+		return "calendar/delete";
+	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public ModelAndView deleteVisitSubmit(
+			@Valid DeleteVisitBean deleteVisitBean, Model model)
+			throws IOException {
+		visitService.delete(deleteVisitBean.getIdVisit());
+		model.addAttribute("deleteVisitBean", new DeleteVisitBean());
+		cachedVisitsMap.remove(deleteVisitBean.getIdVisit());
+		model.addAttribute("visits", cachedVisitsMap);
+		ModelAndView mav = new ModelAndView("calendar/delete", "result",
+				messageSource.getMessage("visitDeleted", null, null));
 		return mav;
 	}
 }

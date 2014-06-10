@@ -46,11 +46,14 @@ public abstract class AbstractRepository<T> {
 	}
 
 	public void update(T object) {
-		getSession().update(object);
+		getSession().clear();
+		getSession().merge(object);
 		getSession().flush();
 	}
 
 	public void delete(T object) {
+		getSession().clear();
 		getSession().delete(object);
+		getSession().flush();
 	}
 }

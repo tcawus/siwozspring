@@ -20,7 +20,8 @@ public class UsersRepository extends AbstractRepository<Users> {
 	}
 
 	public Collection<Users> getAllDisabled() {
-		Query query = getSession().createQuery("from Users where enabled=false");
+		Query query = getSession()
+				.createQuery("from Users where enabled=false");
 		return Lists.newArrayList(Iterables.filter(query.list(), Users.class));
 	}
 
@@ -47,5 +48,11 @@ public class UsersRepository extends AbstractRepository<Users> {
 			return null;
 		return Lists.newArrayList(Iterables.filter(queryResult, Users.class))
 				.get(0);
+	}
+
+	public void unsubscribePatient(long id) {
+		Users users = (Users) getSession().get(Users.class, id);
+		users.setEnabled(false);
+		update(users);
 	}
 }

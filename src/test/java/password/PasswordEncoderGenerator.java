@@ -1,4 +1,5 @@
-package org.siwoz.controller;
+package password;
+
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

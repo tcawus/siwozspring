@@ -10,7 +10,10 @@ import javax.annotation.Resource;
 
 import org.siwoz.dao.model.HistoricalVisit;
 import org.siwoz.dao.model.Patient;
+import org.siwoz.dao.model.Users;
 import org.siwoz.dao.repos.HistoricalVisitRepository;
+import org.siwoz.filter.HistoricalVisitsForPatientFilter;
+import org.siwoz.filter.IFilter;
 import org.siwoz.filter.PatientDataForHistoricalVisitFilter;
 import org.siwoz.filter.PatientsForHistoricalVisitFilter;
 import org.siwoz.model.forms.employee.PatientRecordFormBean;
@@ -45,16 +48,45 @@ public class HistoricalVisitService implements IService<HistoricalVisit> {
 		if (cachedList != null) {
 			PatientDataForHistoricalVisitFilter filter = new PatientDataForHistoricalVisitFilter(
 					formBean.getName());
-			List<PatientVisitDataBean> visitDataList = Lists.newArrayList();
-			for (HistoricalVisit visit : filter.doFilter(cachedList)) {
-				PatientVisitDataBean patientVisitDataBean = new PatientVisitDataBean(
-						formBean.getName(), visit.getIdDescription()
-								.getDescription(), visit.getVisitDate());
-				visitDataList.add(patientVisitDataBean);
-			}
-			return visitDataList;
+			return constructPatientVisitDataBeans(filter.doFilter(cachedList));
 		}
 		return null;
+	}
+
+	public Map<String, String> getCachedListAsMap() {
+		Map<String, String> patients = new LinkedHashMap<String, String>();
+		for (HistoricalVisit historicalVisit : cachedList) {
+			Patient patient = historicalVisit.getIdPatient2Company()
+					.getIdPatient();
+			String fullName = patient.getIdUser().getName() + " "
+					+ patient.getIdUser().getSurname();
+			patients.put(fullName, fullName);
+		}
+		return patients;
+	}
+
+	public List<PatientVisitDataBean> getVisitsForUser(String email) {
+		List<HistoricalVisit> historicalVisits = historicalVisitRepository
+				.getAll();
+		IFilter<HistoricalVisit> historicalVisitFilter = new HistoricalVisitsForPatientFilter(
+				email);
+		return constructPatientVisitDataBeans(historicalVisitFilter
+				.doFilter(historicalVisits));
+	}
+
+	private List<PatientVisitDataBean> constructPatientVisitDataBeans(
+			Collection<HistoricalVisit> historicalVisits) {
+		List<PatientVisitDataBean> visitDataList = Lists.newArrayList();
+		for (HistoricalVisit visit : historicalVisits) {
+			Users currentUser = visit.getIdPatient2Company().getIdPatient()
+					.getIdUser();
+			PatientVisitDataBean patientVisitDataBean = new PatientVisitDataBean(
+					currentUser.getName() + " " + currentUser.getSurname(),
+					visit.getIdDescription().getDescription(),
+					visit.getVisitDate());
+			visitDataList.add(patientVisitDataBean);
+		}
+		return visitDataList;
 	}
 
 	@Override
@@ -84,17 +116,5 @@ public class HistoricalVisitService implements IService<HistoricalVisit> {
 
 	public List<HistoricalVisit> getCachedList() {
 		return new ArrayList<HistoricalVisit>(cachedList);
-	}
-
-	public Map<String, String> getCachedListAsMap() {
-		Map<String, String> patients = new LinkedHashMap<String, String>();
-		for (HistoricalVisit historicalVisit : cachedList) {
-			Patient patient = historicalVisit.getIdPatient2Company()
-					.getIdPatient();
-			String fullName = patient.getIdUser().getName() + " "
-					+ patient.getIdUser().getSurname();
-			patients.put(fullName, fullName);
-		}
-		return patients;
 	}
 }

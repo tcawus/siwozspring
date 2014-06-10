@@ -1,5 +1,6 @@
 package org.siwoz.dao.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,17 +15,17 @@ public class Patient2Company {
 
 	@Id
 	@GeneratedValue
-	private Integer id;
+	private long id;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Patient.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Patient.class, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "idPatient", updatable = true, insertable = true)
 	private Patient idPatient;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Company.class)
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Company.class, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "idCompany", updatable = true, insertable = true)
 	private Company idCompany;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -44,7 +45,7 @@ public class Patient2Company {
 		this.idCompany = idCompany;
 	}
 
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

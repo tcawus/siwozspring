@@ -3,11 +3,14 @@ package org.siwoz.service.general;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.siwoz.dao.model.Patient2Company;
+import org.siwoz.dao.model.Users;
 import org.siwoz.dao.model.Visit;
 import org.siwoz.dao.model.VisitDescription;
 import org.siwoz.dao.repos.Patient2CompanyRepository;
@@ -93,5 +96,29 @@ public class VisitService implements IService<Visit> {
 		String email = usersRepository.getById(idUser).getUsername();
 		mailSender.send(email, "Wizyta " + visit.getVisitDate(), visit
 				.getIdDescription().getDescription());
+	}
+
+	public void delete(String idVisit) {
+		Visit visitToDelete = visitRepository.getById(Long.parseLong(idVisit));
+
+		mailSender.send(
+				visitToDelete.getIdPatient2Company().getIdPatient().getIdUser()
+						.getUsername(),
+				"Odwolanie wizyty dentystycznej",
+				"Bardzo przepraszam ale wizyta dnia "
+						+ visitToDelete.getVisitDate() + " zostala odwolana");
+		visitRepository.delete(visitToDelete);
+	}
+
+	public Map<String, String> getAllAsMap() {
+		List<Visit> visits = visitRepository.getAll();
+		Map<String, String> result = new HashMap<String, String>();
+		for (Visit visit : visits) {
+			Users user = visit.getIdPatient2Company().getIdPatient()
+					.getIdUser();
+			result.put(String.valueOf(visit.getId()), user.getName() + " "
+					+ user.getSurname() + " " + visit.getVisitDate());
+		}
+		return result;
 	}
 }

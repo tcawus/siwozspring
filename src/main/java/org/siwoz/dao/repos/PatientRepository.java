@@ -1,6 +1,5 @@
 package org.siwoz.dao.repos;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -24,5 +23,4 @@ public class PatientRepository extends AbstractRepository<Patient> {
 	public Patient getById(long id) {
 		return (Patient) getSession().get(Patient.class, id);
 	}
-
 }
