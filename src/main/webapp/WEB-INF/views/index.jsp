@@ -35,16 +35,8 @@
 						<p>Jesli pacjent nie ma jeszcze konta to moze zarejestrowac
 							sie on tutaj.</p>
 						<p>
-							<a class="btn btn-default" href="${contextPath}/rejestracja"
+							<a class="btn btn-default" href="${contextPath}/register"
 								role="button">Rejestracja &raquo;</a>
-						</p>
-					</div>
-					<div class="col-md-4">
-						<h2>Kalendarz</h2>
-						<p>Podglad kalendarza.</p>
-						<p>
-							<a class="btn btn-default" href="${contextPath}/calendar"
-								role="button">Kalendarz &raquo;</a>
 						</p>
 					</div>
 				</div>

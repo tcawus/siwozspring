@@ -54,7 +54,7 @@
 			</div>
 			<br/><br/><br/><br/><br/>
 			<div id="form" class="control-group">
-				<form:form method="post" action="delete" class=".form-horizontal">
+				<form:form method="post" action="edit/delete" class=".form-horizontal">
 					<div class="controls">
 						<input type="submit" value="Usun konto" class="btn btn-primary" />
 					</div>

@@ -77,10 +77,7 @@ public class IndexController {
 			@RequestParam(value = "logout", required = false) String logout) {
 		ModelAndView model = new ModelAndView();
 		if (error != null) {
-			model.addObject("error", "Invalid username and password!");
-		}
-		if (logout != null) {
-			model.addObject("msg", "You've been logged out successfully.");
+			model.addObject("error", "Nieprawidlowy login lub haslo!");
 		}
 		model.setViewName("login");
 		return model;

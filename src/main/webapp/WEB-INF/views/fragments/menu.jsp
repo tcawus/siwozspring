@@ -42,7 +42,7 @@
 								pacjenta </a></li>
 						<li><c:set var="contextPath"
 								value="${pageContext.request.contextPath}" /> <a
-							href="${contextPath}/calendar/" target="_blank"
+							href="${contextPath}/calendar/admincalendar" target="_blank"
 							class="navbar-brand">Moj kalendarz</a></li>
 						<li><c:set var="contextPath"
 								value="${pageContext.request.contextPath}" /> <a
@@ -54,6 +54,10 @@
 								value="${pageContext.request.contextPath}" /> <a
 							href="${contextPath}/calendar/" target="_blank"
 							class="navbar-brand">Moj kalendarz</a></li>
+							<li><c:set var="contextPath"
+								value="${pageContext.request.contextPath}" /> <a
+							href="${contextPath}/account/edit" target="_blank"
+							class="navbar-brand">Edytuj konto</a></li>
 						<li><c:set var="contextPath"
 								value="${pageContext.request.contextPath}" /> <a
 							href="${contextPath}/visits/" class="navbar-brand">Przebieg

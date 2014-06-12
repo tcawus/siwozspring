@@ -13,7 +13,7 @@
 
 <div id = "page">
 <div id = "tytul1">
-<h4>Zarejestruj sie</h4>
+<h4>Zarejestruj</h4>
 </div>
 	<div id="form" class="control-group">
 		<form:form method="post" modelAttribute="registerBean" class=".form-horizontal">

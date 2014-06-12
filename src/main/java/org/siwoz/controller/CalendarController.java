@@ -50,6 +50,14 @@ public class CalendarController {
 		return new ModelAndView(
 				"redirect:https://www.google.com/calendar/embed?src=siwoz2014%40gmail.com&ctz=Europe/Warsaw");
 	}
+	
+	@RequestMapping(value = "/admincalendar", method = RequestMethod.GET)
+	public ModelAndView adminCalendarIndex(Model model, Principal principal)
+			throws IOException {
+		calendarService.getAllEvents();
+		return new ModelAndView(
+				"redirect:https://www.google.com/calendar/embed?src=siwoz2014%40gmail.com&ctz=Europe/Warsaw");
+	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addNewVisit(Model model) throws IOException {

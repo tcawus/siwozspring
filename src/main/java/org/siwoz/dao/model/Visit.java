@@ -2,7 +2,6 @@ package org.siwoz.dao.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,15 +22,15 @@ public class Visit {
 	@Column
 	Date visitDate;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Patient2Company.class, cascade = { CascadeType.ALL })
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Patient2Company.class)
 	@JoinColumn(name = "idPatient2Company", updatable = true, insertable = true)
 	private Patient2Company idPatient2Company;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = VisitDescription.class, cascade = { CascadeType.ALL })
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = VisitDescription.class)
 	@JoinColumn(name = "idDescription", updatable = true, insertable = true)
 	private VisitDescription idDescription;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Employee.class, cascade = { CascadeType.ALL })
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Employee.class)
 	@JoinColumn(name = "idEmployee", updatable = true, insertable = true)
 	private Employee idEmployee;
 

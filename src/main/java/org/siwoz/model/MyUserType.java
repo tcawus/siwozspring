@@ -5,8 +5,7 @@ import java.util.Map;
 
 public enum MyUserType {
 
-	OWNER("Właściciel", "1"), EMPLOYEE("Pracownik", "2"), PATIENT("Pacjent",
-			"3");
+	PATIENT("Pacjent", "3");
 
 	private String plName;
 	private String id;

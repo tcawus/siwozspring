@@ -1,6 +1,5 @@
 package org.siwoz.dao.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,11 +16,11 @@ public class Patient2Company {
 	@GeneratedValue
 	private long id;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Patient.class, cascade = { CascadeType.ALL })
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Patient.class)
 	@JoinColumn(name = "idPatient", updatable = true, insertable = true)
 	private Patient idPatient;
 
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Company.class, cascade = { CascadeType.ALL })
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Company.class)
 	@JoinColumn(name = "idCompany", updatable = true, insertable = true)
 	private Company idCompany;
 

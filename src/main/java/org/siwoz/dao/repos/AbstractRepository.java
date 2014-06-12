@@ -40,7 +40,8 @@ public abstract class AbstractRepository<T> {
 	public abstract T getById(long id);
 
 	public T add(T object) {
-		getSession().saveOrUpdate(object);
+		getSession().clear();
+		getSession().save(object);
 		getSession().flush();
 		return object;
 	}
